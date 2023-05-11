@@ -6,6 +6,8 @@ const GlobalStyle = createGlobalStyle`
     padding: 0;
     box-sizing: border-box;
 
+    font-family: 'Noto Sans', sans-serif;
+
     background-color: ${(props) => props.theme.bg};
     color: ${(props) => props.theme.fg}
   }
