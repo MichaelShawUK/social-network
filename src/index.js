@@ -1,16 +1,22 @@
 import React from "react";
 import ReactDOM from "react-dom/client";
 import { createBrowserRouter, RouterProvider } from "react-router-dom";
+import App from "./components/App";
 import Loading from "./components/Loading";
 
 const router = createBrowserRouter([
   {
-    path: "/",
-    element: <div>Root element</div>,
-  },
-  {
-    path: "/loading",
-    element: <Loading />,
+    element: <App />,
+    children: [
+      {
+        path: "/",
+        element: <div>Child Element</div>,
+      },
+      {
+        path: "/loading",
+        element: <Loading />,
+      },
+    ],
   },
 ]);
 

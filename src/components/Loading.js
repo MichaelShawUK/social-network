@@ -1,8 +1,11 @@
+import { Oval } from "svg-loaders-react";
+import StyledLoading from "../styles/StyledLoading";
+
 const Loading = () => {
   return (
-    <div>
-      <p>Loading...</p>
-    </div>
+    <StyledLoading>
+      <Oval />
+    </StyledLoading>
   );
 };
 
