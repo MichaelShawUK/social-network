@@ -6,18 +6,26 @@ const StyledForm = styled(Form)`
   flex-direction: column;
   align-items: center;
   gap: 3rem;
+  min-width: 300px;
+  width: 100%;
   max-width: 600px;
   background-color: ${(props) => props.theme.secondary};
   padding: 2rem;
   border-radius: 6px;
-  box-shadow: 0 0 2px ${(props) => props.theme.fg};
+  box-shadow: 0 0 4px #000;
   margin: 0 auto;
+  z-index: 2;
 
   > label {
     display: flex;
     background-color: ${(props) => props.theme.secondary};
     flex-direction: column;
     font-weight: bold;
+
+    > p {
+      background-color: ${(props) => props.theme.secondary};
+      font-weight: normal;
+    }
   }
 
   input {
@@ -45,6 +53,11 @@ const StyledForm = styled(Form)`
   > div {
     display: flex;
     flex-direction: column;
+
+    > p {
+      background-color: ${(props) => props.theme.secondary};
+      margin-bottom: 0.5rem;
+    }
   }
 
   > p,

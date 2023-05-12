@@ -11,6 +11,10 @@ const GlobalStyle = createGlobalStyle`
     background-color: ${(props) => props.theme.bg};
     color: ${(props) => props.theme.fg}
   }
+
+  .error {
+    color: red;
+  }
 `;
 
 export default GlobalStyle;

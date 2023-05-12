@@ -6,6 +6,7 @@ const StyledLogin = styled.div`
   justify-content: center;
   align-items: center;
   height: 80vh;
+  margin: 6px;
 
   > svg {
     padding: 1rem;

@@ -5,6 +5,10 @@ import App from "./components/App";
 import Loading from "./components/Loading";
 import Login from "./components/Login";
 
+import homeLoader from "./loader/home";
+
+import loginAction from "./action/login";
+
 const router = createBrowserRouter([
   {
     element: <App />,
@@ -12,10 +16,12 @@ const router = createBrowserRouter([
       {
         path: "/",
         element: <div>Child Element</div>,
+        loader: homeLoader,
       },
       {
         path: "/login",
         element: <Login />,
+        action: loginAction,
       },
       {
         path: "/loading",

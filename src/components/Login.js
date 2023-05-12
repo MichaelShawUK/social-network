@@ -1,24 +1,34 @@
 import StyledButton from "../styles/StyledButton";
 import StyledForm from "../styles/StyledForm";
 import StyledLogin from "../styles/StyledLogin";
-import { Link } from "react-router-dom";
+import { Link, useActionData } from "react-router-dom";
 
 const Login = () => {
+  const errors = useActionData();
+
+  function handleDemo(e) {
+    e.target.form[0].value = "Test";
+    e.target.form[1].value = "User";
+  }
+
   return (
     <StyledLogin>
       <StyledForm action="/login" method="POST">
         <h2>Welcome Back</h2>
         <label>
+          <p className="error">{errors?.username}</p>
           Username
-          <input type="text" autoFocus></input>
+          <input type="text" name="username" autoFocus></input>
         </label>
         <label>
+          <p className="error">{errors?.password}</p>
           Password
-          <input type="password"></input>
+          <input type="password" name="password"></input>
         </label>
         <div>
+          <p className="error">{errors?.database}</p>
           <StyledButton type="submit">Log In</StyledButton>
-          <StyledButton>Demo Tour</StyledButton>
+          <StyledButton onClick={handleDemo}>Demo Tour</StyledButton>
         </div>
         <p>
           Don't have an account? <Link to="/register">Register</Link>{" "}
