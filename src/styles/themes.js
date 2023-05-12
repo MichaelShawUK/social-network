@@ -2,7 +2,7 @@ const accent = "#F9A826";
 const hover = "#ddc411";
 
 export const darkTheme = {
-  bg: "#2f2f2f",
+  bg: "#222",
   fg: "#eee",
   secondary: "#223",
   accent,

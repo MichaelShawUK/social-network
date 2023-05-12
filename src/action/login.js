@@ -10,7 +10,7 @@ const loginAction = async ({ request }) => {
     try {
       const response = await axios({
         method: "post",
-        url: "/login",
+        url: "login",
         baseURL: database,
         data: {
           username,

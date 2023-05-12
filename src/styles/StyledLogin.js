@@ -5,7 +5,7 @@ const StyledLogin = styled.div`
   grid-template-columns: 1fr 1fr;
   justify-content: center;
   align-items: center;
-  height: 80vh;
+  min-height: 80vh;
   margin: 6px;
 
   > svg {
@@ -13,7 +13,7 @@ const StyledLogin = styled.div`
     max-width: 600px;
   }
 
-  @media (max-width: 800px) {
+  @media (max-width: 1200px) {
     grid-template-columns: 1fr;
     margin-top: 2rem;
 

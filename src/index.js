@@ -8,6 +8,8 @@ import Login from "./components/Login";
 import homeLoader from "./loader/home";
 
 import loginAction from "./action/login";
+import Register from "./components/Register";
+import registerAction from "./action/register";
 
 const router = createBrowserRouter([
   {
@@ -22,6 +24,11 @@ const router = createBrowserRouter([
         path: "/login",
         element: <Login />,
         action: loginAction,
+      },
+      {
+        path: "/register",
+        element: <Register />,
+        action: registerAction,
       },
       {
         path: "/loading",

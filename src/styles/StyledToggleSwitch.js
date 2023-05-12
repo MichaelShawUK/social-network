@@ -20,14 +20,15 @@ const StyledToggleSwitch = styled.label`
     cursor: pointer;
     background-color: #999;
     border-radius: 22px;
-    outline: 2px solid white;
+    outline: 2px solid #333;
   }
 
   > div::before {
     content: "";
     height: 18px;
     width: 18px;
-    background-color: ${(props) => props.theme.accent};
+    background-color: #ededed;
+
     position: absolute;
     bottom: 2px;
     left: 2px;
@@ -36,12 +37,12 @@ const StyledToggleSwitch = styled.label`
   }
 
   > input:checked + div {
-    outline-color: #333;
+    outline-color: white;
   }
 
   > input:checked + div::before {
     transform: translateX(18px);
-    background-color: #ededed;
+    background-color: ${(props) => props.theme.accent};
   }
 `;
 

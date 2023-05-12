@@ -1,12 +1,12 @@
 import { Outlet } from "react-router-dom";
-import { darkTheme } from "../styles/themes";
+import { lightTheme } from "../styles/themes";
 import GlobalStyle from "../styles/GlobalStyle";
 import { ThemeProvider } from "styled-components";
 import { useState } from "react";
 import Nav from "./Nav";
 
 const App = () => {
-  const [theme, setTheme] = useState(darkTheme);
+  const [theme, setTheme] = useState(lightTheme);
 
   return (
     <ThemeProvider theme={theme}>

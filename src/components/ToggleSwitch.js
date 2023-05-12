@@ -4,9 +4,9 @@ import { lightTheme, darkTheme } from "../styles/themes";
 const ToggleSwitch = ({ setTheme }) => {
   function handleTheme(e) {
     if (e.target.checked) {
-      setTheme(lightTheme);
-    } else {
       setTheme(darkTheme);
+    } else {
+      setTheme(lightTheme);
     }
   }
 

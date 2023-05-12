@@ -9,7 +9,6 @@ const homeLoader = async () => {
 
   const { data } = await axios({
     baseURL: database,
-    url: "/",
     headers: { Authorization: `Bearer ${localStorage.token}` },
   });
 
