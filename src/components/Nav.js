@@ -1,10 +1,18 @@
 import ThemeSlider from "./ThemeSlider";
+import AvatarNav from "./AvatarNav";
+import StyledNav from "../styles/StyledNav";
+import UserMenu from "./UserMenu";
+import { useState } from "react";
 
 const Nav = ({ setTheme }) => {
+  const [showMenu, setShowMenu] = useState(true);
+
   return (
-    <nav>
+    <StyledNav>
       <ThemeSlider setTheme={setTheme} />
-    </nav>
+      <AvatarNav showMenu={showMenu} setShowMenu={setShowMenu} />
+      {showMenu && <UserMenu />}
+    </StyledNav>
   );
 };
 
