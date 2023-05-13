@@ -1,8 +1,9 @@
 import avatar from "../assets/images/avatar.png";
 import UserMenu from "./UserMenu";
-import { useEffect, useRef } from "react";
+import { useEffect, useRef, useState } from "react";
 
-const AvatarNav = ({ showMenu, setShowMenu }) => {
+const AvatarNav = () => {
+  const [showMenu, setShowMenu] = useState(false);
   const ref = useRef(null);
 
   useEffect(() => {
