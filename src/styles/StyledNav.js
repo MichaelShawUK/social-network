@@ -13,7 +13,11 @@ const StyledNav = styled.nav`
     background-color: ${(props) => props.theme.secondary};
   }
 
-  > img {
+  > div {
+    height: 64px;
+  }
+
+  img {
     cursor: pointer;
     &:hover {
       opacity: 0.9;
