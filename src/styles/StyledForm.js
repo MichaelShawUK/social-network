@@ -12,7 +12,7 @@ const StyledForm = styled(Form)`
   background-color: ${(props) => props.theme.secondary};
   padding: 2rem;
   border-radius: 6px;
-  box-shadow: 0 0 4px #000;
+  box-shadow: 0 0 4px ${(props) => props.theme.shadow};
   margin: 0 auto;
   z-index: 2;
 

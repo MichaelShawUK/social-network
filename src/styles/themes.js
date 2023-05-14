@@ -7,6 +7,7 @@ export const darkTheme = {
   secondary: "#223",
   accent,
   hover,
+  shadow: "orange",
 };
 
 export const lightTheme = {
@@ -15,4 +16,5 @@ export const lightTheme = {
   secondary: "white",
   accent,
   hover,
+  shadow: "silver",
 };

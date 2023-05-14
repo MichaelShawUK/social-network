@@ -2,7 +2,7 @@ import { styled } from "styled-components";
 
 const StyledNav = styled.nav`
   background-color: ${(props) => props.theme.secondary};
-  box-shadow: 0 0 4px black;
+  box-shadow: 0 0 4px ${(props) => props.theme.shadow};
   display: grid;
   grid-template-columns: 1fr 64px;
   padding: 0 0.5rem;
