@@ -4,14 +4,14 @@ import StyledButton from "../styles/StyledButton";
 const PostPrompt = () => {
   return (
     <StyledPostPrompt>
-      <section>
+      <form>
         <input
           placeholder="What's on your mind, Mike?"
           type="text"
           autoFocus
         ></input>
         <StyledButton>Make Post</StyledButton>
-      </section>
+      </form>
       <div>
         <StyledButton>Add Photo</StyledButton>
       </div>

@@ -10,6 +10,7 @@ const StyledButton = styled.button`
   border: none;
   cursor: pointer;
   box-shadow: 0px 0px 5px ${(props) => props.theme.shadow};
+  min-width: 100px;
 
   &:hover {
     color: ${(props) => props.theme.bg};

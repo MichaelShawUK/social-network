@@ -9,7 +9,7 @@ const StyledPostPrompt = styled.div`
   margin: 0 auto;
   border-radius: 4px;
 
-  > section {
+  > form {
     background-color: ${(props) => props.theme.secondary};
     display: grid;
     grid-template-columns: 1fr 150px;
@@ -32,14 +32,29 @@ const StyledPostPrompt = styled.div`
   input {
     padding: 12px;
     border-radius: 6px;
-    /* border-top-right-radius: 6px; */
-    /* border-top-left-radius: 6px; */
     border: none;
     width: 100%;
     font-size: 1rem;
 
     &:focus-visible {
       outline: 1px solid ${(props) => props.theme.fg};
+    }
+  }
+
+  @media (max-width: 700px) {
+    padding: 1rem;
+    > form {
+      display: flex;
+      flex-direction: column;
+      gap: 0.5rem;
+    }
+
+    > div {
+      margin-top: 0.5rem;
+    }
+
+    input {
+      font-size: 14px;
     }
   }
 `;
