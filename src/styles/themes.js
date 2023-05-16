@@ -1,12 +1,12 @@
 const accent = "#F9A826";
-const hover = "#ddc411";
+// const hover = "#ddc411";
 
 export const darkTheme = {
   bg: "#222",
   fg: "#eee",
   secondary: "#223",
   accent,
-  hover,
+  hover: "#343b6c",
   shadow: "orange",
 };
 
@@ -15,6 +15,6 @@ export const lightTheme = {
   fg: "#222",
   secondary: "white",
   accent,
-  hover,
+  hover: "#eee",
   shadow: "silver",
 };

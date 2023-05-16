@@ -43,6 +43,8 @@ const StyledPostPrompt = styled.div`
 
   @media (max-width: 700px) {
     padding: 1rem;
+    border-radius: 0;
+
     > form {
       display: flex;
       flex-direction: column;

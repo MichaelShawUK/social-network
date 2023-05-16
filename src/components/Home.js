@@ -1,7 +1,13 @@
 import PostPrompt from "./PostPrompt";
+import PostCard from "./PostCard";
 
 const Home = () => {
-  return <PostPrompt />;
+  return (
+    <>
+      <PostPrompt />
+      <PostCard />
+    </>
+  );
 };
 
 export default Home;
