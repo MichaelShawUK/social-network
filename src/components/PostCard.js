@@ -1,19 +1,12 @@
 import StyledPostCard from "../styles/StyledPostCard";
 import CommentForm from "./CommentForm";
+import PostHeader from "./PostHeader";
+import Comment from "./Comment";
 
 const PostCard = () => {
   return (
     <StyledPostCard>
-      <header>
-        <img
-          src="https://res.cloudinary.com/dzpobfxwj/image/upload/v1679653808/samples/people/kitchen-bar.jpg"
-          alt=""
-        ></img>
-        <div>
-          <div className="author">Name</div>
-          <div className="time-since">Time Posted</div>
-        </div>
-      </header>
+      <PostHeader />
       <div className="post-text">
         Morbi id facilisis arcu, nec aliquet enim. Aenean faucibus diam sit amet
         eros molestie malesuada. Vestibulum mollis sem at mauris tincidunt
@@ -59,6 +52,8 @@ const PostCard = () => {
         </svg>
       </footer>
       <CommentForm />
+      <Comment />
+      <Comment />
     </StyledPostCard>
   );
 };
