@@ -30,6 +30,7 @@ const StyledPostPrompt = styled.div`
   }
 
   input {
+    background-color: ${(props) => props.theme.bg};
     padding: 12px;
     border-radius: 6px;
     border: none;
