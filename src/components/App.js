@@ -4,6 +4,7 @@ import GlobalStyle from "../styles/GlobalStyle";
 import { ThemeProvider } from "styled-components";
 import { useState } from "react";
 import Nav from "./Nav";
+import StyledNavBackground from "../styles/StyledNavBackground";
 
 import LoggedInContext from "../context/loggedIn";
 
@@ -15,6 +16,7 @@ const App = () => {
     <ThemeProvider theme={theme}>
       <LoggedInContext.Provider value={[loggedIn, setLoggedIn]}>
         <GlobalStyle />
+        <StyledNavBackground />
         <Nav setTheme={setTheme} />
         <Outlet />
       </LoggedInContext.Provider>

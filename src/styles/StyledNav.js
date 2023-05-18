@@ -7,7 +7,10 @@ const StyledNav = styled.nav`
   grid-template-columns: 1fr 64px;
   padding: 0 0.5rem;
   margin-bottom: 2rem;
-  position: relative;
+  position: fixed;
+  width: 100%;
+  top: 0;
+  z-index: 9;
 
   * {
     background-color: ${(props) => props.theme.secondary};
