@@ -1,4 +1,5 @@
 import StyledPostCard from "../styles/StyledPostCard";
+import CommentForm from "./CommentForm";
 
 const PostCard = () => {
   return (
@@ -57,6 +58,7 @@ const PostCard = () => {
           </g>
         </svg>
       </footer>
+      <CommentForm />
     </StyledPostCard>
   );
 };
