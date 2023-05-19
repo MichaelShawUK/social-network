@@ -4,7 +4,7 @@ const accent = "#F9A826";
 export const darkTheme = {
   bg: "#222",
   fg: "#eee",
-  secondary: "#223",
+  secondary: "#41464f",
   accent,
   hover: "#343b6c",
   shadow: "orange",

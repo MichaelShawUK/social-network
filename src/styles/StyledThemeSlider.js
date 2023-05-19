@@ -6,8 +6,8 @@ const StyledThemeSlider = styled.div`
   padding: 0.5rem;
 
   > svg {
-    width: 1.5rem;
-    height: 1.5rem;
+    width: 1.2rem;
+    height: 1.2rem;
     fill: ${(props) => props.theme.fg};
   }
 `;

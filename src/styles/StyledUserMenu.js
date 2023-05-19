@@ -7,7 +7,7 @@ const StyledUserMenu = styled.nav`
   box-shadow: 0px 0px 2px ${(props) => props.theme.shadow};
   z-index: 3;
 
-  :not(:first-child) {
+  :not(:first-child) > div {
     border-top: 1px solid ${(props) => props.theme.shadow};
   }
 
@@ -21,7 +21,7 @@ const StyledUserMenu = styled.nav`
     }
   }
 
-  > div {
+  div {
     padding: 1rem 2rem;
     cursor: pointer;
 

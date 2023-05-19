@@ -8,6 +8,10 @@ const GlobalStyle = createGlobalStyle`
     font-family: 'Noto Sans', sans-serif;
   }
 
+  a:visited {
+    color: inherit;
+  }
+
   body {
     background-color: ${(props) => props.theme.bg};
     color: ${(props) => props.theme.fg};

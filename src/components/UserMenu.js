@@ -4,11 +4,15 @@ import { Link } from "react-router-dom";
 const UserMenu = () => {
   return (
     <StyledUserMenu>
-      <div>
-        <Link to="/profile">Profile</Link>
-      </div>
-      <div>Users</div>
-      <div>Logout</div>
+      <Link to="/profile">
+        <div className="link">Profile</div>
+      </Link>
+      <Link to="/people">
+        <div className="link">People</div>
+      </Link>
+      <Link to="/login">
+        <div className="link">Logout</div>
+      </Link>
     </StyledUserMenu>
   );
 };

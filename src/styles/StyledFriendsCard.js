@@ -17,7 +17,6 @@ const StyledFriendsCard = styled.div`
     width: 100px;
     height: 100px;
     object-fit: cover;
-    background-color: palegreen;
     border-radius: 6px;
     cursor: pointer;
   }
