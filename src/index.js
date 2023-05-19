@@ -6,6 +6,7 @@ import Loading from "./components/Loading";
 import Login from "./components/Login";
 import Home from "./components/Home";
 import Profile from "./components/Profile";
+import People from "./components/People";
 
 import homeLoader from "./loader/home";
 
@@ -35,6 +36,10 @@ const router = createBrowserRouter([
       {
         path: "/profile",
         element: <Profile />,
+      },
+      {
+        path: "/people",
+        element: <People />,
       },
       {
         path: "/loading",

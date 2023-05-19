@@ -36,6 +36,7 @@ const StyledPostPrompt = styled.div`
     border: none;
     width: 100%;
     font-size: 1rem;
+    color: inherit;
 
     &:focus-visible {
       outline: 1px solid ${(props) => props.theme.fg};

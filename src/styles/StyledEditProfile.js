@@ -20,6 +20,7 @@ const StyledEditProfile = styled.form`
     border: none;
     padding: 12px;
     border-radius: 6px;
+    color: inherit;
   }
 
   > input[type="file"] {

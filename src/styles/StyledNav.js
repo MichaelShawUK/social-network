@@ -39,6 +39,7 @@ const StyledNav = styled.nav`
     margin: 0 2rem;
     font-size: 1rem;
     max-width: 600px;
+    color: inherit;
   }
 
   img {

@@ -35,6 +35,7 @@ const StyledForm = styled(Form)`
     border-bottom: 2px solid ${(props) => props.theme.fg};
     padding: 0.5rem;
     font-size: 1rem;
+    color: inherit;
   }
 
   input:focus-visible {
