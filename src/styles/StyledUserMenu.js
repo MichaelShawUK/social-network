@@ -11,12 +11,23 @@ const StyledUserMenu = styled.nav`
     border-top: 1px solid ${(props) => props.theme.shadow};
   }
 
+  a {
+    text-decoration: none;
+    background-color: inherit;
+    color: inherit;
+
+    &:hover {
+      background-color: inherit;
+    }
+  }
+
   > div {
     padding: 1rem 2rem;
     cursor: pointer;
 
     &:hover {
-      background-color: ${(props) => props.theme.bg};
+      background-color: ${(props) => props.theme.accent};
+      color: ${(props) => props.theme.secondary};
     }
   }
 `;

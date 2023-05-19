@@ -5,6 +5,7 @@ import App from "./components/App";
 import Loading from "./components/Loading";
 import Login from "./components/Login";
 import Home from "./components/Home";
+import Profile from "./components/Profile";
 
 import homeLoader from "./loader/home";
 
@@ -30,6 +31,10 @@ const router = createBrowserRouter([
         path: "/register",
         element: <Register />,
         action: registerAction,
+      },
+      {
+        path: "/profile",
+        element: <Profile />,
       },
       {
         path: "/loading",

@@ -50,6 +50,7 @@ const StyledFriendsCard = styled.div`
 
   @media (max-width: 700px) {
     border-radius: 0;
+    padding: 1rem 1rem;
   }
 `;
 
