@@ -40,6 +40,10 @@ const StyledNav = styled.nav`
     font-size: 1rem;
     max-width: 600px;
     color: inherit;
+
+    &:focus-visible {
+      outline: 1px solid ${(props) => props.theme.fg};
+    }
   }
 
   img {

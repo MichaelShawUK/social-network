@@ -21,6 +21,10 @@ const StyledEditProfile = styled.form`
     padding: 12px;
     border-radius: 6px;
     color: inherit;
+
+    &:focus-visible {
+      outline: 1px solid ${(props) => props.theme.fg};
+    }
   }
 
   > input[type="file"] {
