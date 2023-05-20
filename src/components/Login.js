@@ -2,6 +2,7 @@ import StyledButton from "../styles/StyledButton";
 import StyledForm from "../styles/StyledForm";
 import StyledLogin from "../styles/StyledLogin";
 import { Link, useActionData } from "react-router-dom";
+import useNavMenu from "../hooks/useNavMenu";
 
 const Login = () => {
   const errors = useActionData();
@@ -10,6 +11,8 @@ const Login = () => {
     e.target.form[0].value = "Test";
     e.target.form[1].value = "User";
   }
+
+  useNavMenu();
 
   return (
     <StyledLogin>

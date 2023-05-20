@@ -7,18 +7,22 @@ import Nav from "./Nav";
 import StyledNavBackground from "../styles/StyledNavBackground";
 
 import LoggedInContext from "../context/loggedIn";
+import NavMenuContext from "../context/navMenu";
 
 const App = () => {
   const [theme, setTheme] = useState(lightTheme);
   const [loggedIn, setLoggedIn] = useState(true);
+  const [showMenu, setShowMenu] = useState(false);
 
   return (
     <ThemeProvider theme={theme}>
       <LoggedInContext.Provider value={[loggedIn, setLoggedIn]}>
-        <GlobalStyle />
-        <StyledNavBackground />
-        <Nav setTheme={setTheme} />
-        <Outlet />
+        <NavMenuContext.Provider value={[showMenu, setShowMenu]}>
+          <GlobalStyle />
+          <StyledNavBackground />
+          <Nav setTheme={setTheme} />
+          <Outlet />
+        </NavMenuContext.Provider>
       </LoggedInContext.Provider>
     </ThemeProvider>
   );

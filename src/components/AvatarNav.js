@@ -1,9 +1,10 @@
 import avatar from "../assets/images/avatar.png";
 import UserMenu from "./UserMenu";
-import { useEffect, useRef, useState } from "react";
+import { useEffect, useRef, useContext } from "react";
+import NavMenuContext from "../context/navMenu";
 
 const AvatarNav = () => {
-  const [showMenu, setShowMenu] = useState(false);
+  const [showMenu, setShowMenu] = useContext(NavMenuContext);
   const ref = useRef(null);
 
   useEffect(() => {

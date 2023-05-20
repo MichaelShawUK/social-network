@@ -1,7 +1,10 @@
 import StyledPeople from "../styles/StyledPeople";
 import SearchBar from "./SearchBar";
+import useNavMenu from "../hooks/useNavMenu";
 
 const People = () => {
+  useNavMenu();
+
   return (
     <>
       <SearchBar />
