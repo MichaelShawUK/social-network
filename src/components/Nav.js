@@ -7,7 +7,7 @@ import { Link } from "react-router-dom";
 import logo from "../assets/images/logo.png";
 
 const Nav = ({ setTheme }) => {
-  const [loggedIn, setLoggedIn] = useContext(LoggedInContext);
+  const loggedIn = useContext(LoggedInContext)[0];
   return (
     <StyledNav>
       <Link to="/">
