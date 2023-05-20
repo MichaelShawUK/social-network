@@ -2,11 +2,13 @@ import StyledPostPrompt from "../styles/StyledPostPrompt";
 import StyledButton from "../styles/StyledButton";
 
 const PostPrompt = () => {
+  const firstName = localStorage.getItem("firstName");
+
   return (
     <StyledPostPrompt>
       <form>
         <input
-          placeholder="What's on your mind, Mike?"
+          placeholder={`What's on your mind, ${firstName}?`}
           type="text"
           autoFocus
         ></input>

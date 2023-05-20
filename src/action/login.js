@@ -17,8 +17,13 @@ const loginAction = async ({ request }) => {
           password,
         },
       });
+
+      console.log(response.data);
       if (response?.data?.token) {
         localStorage.setItem("token", response.data.token);
+        localStorage.setItem("firstName", response.data.firstName);
+        localStorage.setItem("lastName", response.data.lastName);
+        localStorage.setItem("avatar", response.data.avatar);
         return redirect("/");
       } else {
         errors.database = response.data.message;

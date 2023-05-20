@@ -16,7 +16,7 @@ const Login = () => {
 
   return (
     <StyledLogin>
-      <StyledForm action="/login" method="POST">
+      <StyledForm method="POST">
         <h2>Welcome Back</h2>
         <label>
           <p className="error">{errors?.username}</p>

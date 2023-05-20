@@ -10,7 +10,7 @@ const UserMenu = () => {
       <Link to="/people">
         <div className="link">People</div>
       </Link>
-      <Link to="/login">
+      <Link to="/logout">
         <div className="link">Logout</div>
       </Link>
     </StyledUserMenu>

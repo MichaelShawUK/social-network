@@ -9,6 +9,9 @@ import Profile from "./components/Profile";
 import People from "./components/People";
 
 import homeLoader from "./loader/home";
+import logoutLoader from "./loader/logout";
+import profileLoader from "./loader/profile";
+import peopleLoader from "./loader/people";
 
 import loginAction from "./action/login";
 import Register from "./components/Register";
@@ -36,14 +39,20 @@ const router = createBrowserRouter([
       {
         path: "/profile",
         element: <Profile />,
+        loader: profileLoader,
       },
       {
         path: "/people",
         element: <People />,
+        loader: peopleLoader,
       },
       {
         path: "/loading",
         element: <Loading />,
+      },
+      {
+        path: "/logout",
+        loader: logoutLoader,
       },
     ],
   },
