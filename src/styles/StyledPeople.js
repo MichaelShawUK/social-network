@@ -11,6 +11,11 @@ const StyledPeople = styled.div`
   grid-template-columns: 1fr;
   gap: 1rem;
 
+  a {
+    text-decoration: none;
+    color: inherit;
+  }
+
   .person {
     display: flex;
     align-items: center;

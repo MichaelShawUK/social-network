@@ -1,35 +1,35 @@
 import StyledPeople from "../styles/StyledPeople";
 import SearchBar from "./SearchBar";
 import useNavMenu from "../hooks/useNavMenu";
+import { useLoaderData } from "react-router-dom";
+import Person from "./Person";
 
 const People = () => {
   useNavMenu();
+  const data = useLoaderData();
+  const friends = data.user.friends;
+  const strangers = data.strangers;
 
   return (
     <>
       <SearchBar />
       <StyledPeople>
-        <div className="person">
-          <img
-            src="https://res.cloudinary.com/dzpobfxwj/image/upload/v1679664663/players/641b8352039c87ae2ba915d9.png"
-            alt=""
-          ></img>
-          <div>Demo User</div>
-        </div>
-        <div className="person">
-          <img
-            src="https://res.cloudinary.com/dzpobfxwj/image/upload/v1679664663/players/641b8352039c87ae2ba915d9.png"
-            alt=""
-          ></img>
-          <div>Demo User</div>
-        </div>
-        <div className="person">
-          <img
-            src="https://res.cloudinary.com/dzpobfxwj/image/upload/v1679664663/players/641b8352039c87ae2ba915d9.png"
-            alt=""
-          ></img>
-          <div>Demo User</div>
-        </div>
+        {friends.length > 0 && (
+          <>
+            <h3>Friends</h3>
+            {friends.map((friend) => {
+              return <Person person={friend} key={friend._id} />;
+            })}
+          </>
+        )}
+        {strangers.length > 0 && (
+          <>
+            <h3>People</h3>
+            {strangers.map((stranger) => {
+              return <Person person={stranger} key={stranger._id} />;
+            })}
+          </>
+        )}
       </StyledPeople>
     </>
   );
