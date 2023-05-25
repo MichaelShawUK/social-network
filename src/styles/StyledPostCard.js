@@ -32,30 +32,9 @@ const StyledPostCard = styled.div`
     margin-bottom: 1rem;
   }
 
-  > footer {
-    display: grid;
-    grid-template-columns: 1fr 1fr;
-
-    > svg {
-      justify-self: center;
-      width: 80%;
-      cursor: pointer;
-      &:hover {
-        background-color: ${(props) => props.theme.hover};
-      }
-    }
-  }
-
   @media (max-width: 700px) {
     padding: 1rem;
     border-radius: 0;
-
-    > footer {
-      > svg {
-        height: 24px;
-        width: 24px;
-      }
-    }
   }
 `;
 
