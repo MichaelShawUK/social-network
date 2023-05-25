@@ -1,4 +1,5 @@
 import StyledPostHeader from "../styles/StyledPostHeader";
+import getRelativeTime from "../utils/getRelativeTime";
 
 const PostHeader = ({ post }) => {
   return (
@@ -8,7 +9,7 @@ const PostHeader = ({ post }) => {
         <div className="author">
           {`${post.author.firstName} ${post.author.lastName}`}
         </div>
-        <div className="time-since">{post.createdAt}</div>
+        <div className="time-since">{getRelativeTime(post.createdAt)}</div>
       </div>
     </StyledPostHeader>
   );
