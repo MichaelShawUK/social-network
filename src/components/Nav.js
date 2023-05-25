@@ -1,6 +1,7 @@
 import ThemeSlider from "./ThemeSlider";
 import AvatarNav from "./AvatarNav";
 import StyledNav from "../styles/StyledNav";
+import SearchBar from "./SearchBar";
 import { useContext } from "react";
 import LoggedInContext from "../context/loggedIn";
 import { Link } from "react-router-dom";
@@ -14,6 +15,7 @@ const Nav = ({ setTheme }) => {
         <img src={logo} alt=""></img>
       </Link>
       <input type="text" name="q" placeholder="Find People..."></input>
+      {/* <SearchBar /> */}
       <ThemeSlider setTheme={setTheme} />
       {loggedIn && <AvatarNav />}
     </StyledNav>

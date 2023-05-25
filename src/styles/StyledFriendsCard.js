@@ -13,6 +13,11 @@ const StyledFriendsCard = styled.div`
   max-height: 600px;
   overflow-y: auto;
 
+  button {
+    margin: 0;
+    margin-top: 1rem;
+  }
+
   .header {
     display: flex;
     gap: 0.5rem;

@@ -31,6 +31,7 @@ const StyledPeople = styled.div`
       height: 60px;
       object-fit: cover;
       margin-right: 1rem;
+      border-radius: 6px;
     }
   }
 
