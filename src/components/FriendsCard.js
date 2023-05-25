@@ -5,8 +5,8 @@ const FriendsCard = ({ friends }) => {
     <StyledFriendsCard>
       <h3>Friends</h3>
       <div className="friends">
-        {friends.map((friend, index) => (
-          <img key={index} src={friend} alt=""></img>
+        {friends.map((friend) => (
+          <img key={friend._id} src={friend.avatar} alt=""></img>
         ))}
       </div>
     </StyledFriendsCard>
