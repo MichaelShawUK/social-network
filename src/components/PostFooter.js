@@ -1,6 +1,6 @@
 import StyledPostFooter from "../styles/StyledPostFooter";
 
-const PostFooter = () => {
+const PostFooter = ({ showComments, setShowComments }) => {
   return (
     <StyledPostFooter>
       <svg
@@ -25,6 +25,7 @@ const PostFooter = () => {
         viewBox="0 0 24 24"
         xmlns="http://www.w3.org/2000/svg"
         fill="none"
+        onClick={() => setShowComments(!showComments)}
       >
         <g id="SVGRepo_iconCarrier">
           <path

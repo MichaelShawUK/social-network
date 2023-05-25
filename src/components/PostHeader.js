@@ -1,14 +1,14 @@
 import StyledPostHeader from "../styles/StyledPostHeader";
 
-const PostHeader = () => {
+const PostHeader = ({ post }) => {
   return (
     <StyledPostHeader>
-      <img src={localStorage.getItem("avatar")} alt=""></img>
+      <img src={post.author.avatar} alt=""></img>
       <div>
-        <div className="author">{`${localStorage.getItem(
-          "firstName"
-        )} ${localStorage.getItem("lastName")}`}</div>
-        <div className="time-since">Time Posted</div>
+        <div className="author">
+          {`${post.author.firstName} ${post.author.lastName}`}
+        </div>
+        <div className="time-since">{post.createdAt}</div>
       </div>
     </StyledPostHeader>
   );

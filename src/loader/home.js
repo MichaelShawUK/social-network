@@ -12,7 +12,7 @@ const homeLoader = async () => {
     headers: { Authorization: `Bearer ${localStorage.token}` },
   });
 
-  console.log(data);
+  // console.log(data);
 
   return data;
 };
