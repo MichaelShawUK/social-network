@@ -32,7 +32,7 @@ const Profile = () => {
 
   return (
     <div>
-      <FriendsCard friends={user.friends} />
+      <FriendsCard user={user} />
       {ownProfile ? <EditProfile /> : <FriendRequest user={user} />}
       {posts.map((post) => {
         return <PostCard post={post} key={post._id} />;

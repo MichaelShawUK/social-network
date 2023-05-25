@@ -9,7 +9,7 @@ const Home = () => {
 
   return (
     <>
-      <FriendsCard friends={user.friends} />
+      <FriendsCard user={user} />
       <PostPrompt />
       {posts.map((post) => {
         return <PostCard post={post} key={post._id} />;
