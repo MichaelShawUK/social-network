@@ -13,6 +13,24 @@ const StyledFriendsCard = styled.div`
   max-height: 600px;
   overflow-y: auto;
 
+  .header {
+    display: flex;
+    gap: 0.5rem;
+    align-items: center;
+  }
+
+  .arrow {
+    display: none;
+    width: 24px;
+    height: 24px;
+    transition: transform 0.3s ease-out;
+    transform: rotate(-90deg);
+  }
+
+  .rotate {
+    transform: rotate(0deg);
+  }
+
   img {
     width: 100px;
     height: 100px;
@@ -36,8 +54,16 @@ const StyledFriendsCard = styled.div`
     height: auto;
     max-height: 100%;
 
-    .friends {
+    .hide {
       display: none;
+    }
+
+    .arrow {
+      display: inline-block;
+    }
+
+    .header {
+      cursor: pointer;
     }
   }
 
