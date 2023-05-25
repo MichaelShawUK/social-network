@@ -16,6 +16,8 @@ const StyledFriendRequest = styled.div`
   img {
     width: 100px;
     height: 100px;
+    object-fit: cover;
+    border-radius: 6px;
   }
 
   @media (max-width: 700px) {

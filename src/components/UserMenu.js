@@ -4,7 +4,7 @@ import { Link } from "react-router-dom";
 const UserMenu = () => {
   return (
     <StyledUserMenu>
-      <Link to="/profile">
+      <Link to={`/profile/${localStorage.getItem("userId")}`}>
         <div className="link">Profile</div>
       </Link>
       <Link to="/people">

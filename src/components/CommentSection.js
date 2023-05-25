@@ -2,6 +2,7 @@ import CommentForm from "./CommentForm";
 import Comment from "./Comment";
 import { useEffect, useState } from "react";
 import axios from "axios";
+import { database } from "../data/constants";
 
 const CommentSection = ({ postId }) => {
   const [comments, setComments] = useState([]);
@@ -10,7 +11,7 @@ const CommentSection = ({ postId }) => {
     async function fetchComments() {
       const response = await axios({
         method: "post",
-        url: "http://localhost:3000/comments",
+        url: `${database}/comments`,
         headers: { Authorization: `Bearer ${localStorage.token}` },
         data: { postId },
       });

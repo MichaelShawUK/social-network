@@ -1,14 +1,12 @@
 import StyledButton from "../styles/StyledButton";
 import StyledFriendRequest from "../styles/StyledFriendRequest";
 
-const FriendRequest = () => {
+const FriendRequest = ({ user }) => {
+  console.log(user);
   return (
     <StyledFriendRequest>
-      <img
-        src="https://res.cloudinary.com/dzpobfxwj/image/upload/v1679664672/players/641b8353039c87ae2ba915f1.png"
-        alt=""
-      ></img>
-      <div className="name">Demo User</div>
+      <img src={user.avatar} alt=""></img>
+      <div className="name">{`${user.firstName} ${user.lastName}`}</div>
       <form>
         <StyledButton>Friend Request</StyledButton>
       </form>

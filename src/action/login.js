@@ -21,6 +21,7 @@ const loginAction = async ({ request }) => {
       console.log(response.data);
       if (response?.data?.token) {
         localStorage.setItem("token", response.data.token);
+        localStorage.setItem("userId", response.data.userId);
         localStorage.setItem("firstName", response.data.firstName);
         localStorage.setItem("lastName", response.data.lastName);
         localStorage.setItem("avatar", response.data.avatar);
