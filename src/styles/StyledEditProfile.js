@@ -10,6 +10,17 @@ const StyledEditProfile = styled.form`
   border-radius: 4px;
   box-shadow: 0px 0px 4px ${(props) => props.theme.shadow};
 
+  .resetButton {
+    justify-self: flex-start;
+  }
+
+  .avatarImage {
+    height: 60px;
+    width: 60px;
+    object-fit: cover;
+    border-radius: 6px;
+  }
+
   > input,
   h3 {
     margin-bottom: 0.5rem;
