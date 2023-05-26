@@ -13,6 +13,7 @@ const App = () => {
   const [theme, setTheme] = useState(lightTheme);
   const [loggedIn, setLoggedIn] = useState(true);
   const [showMenu, setShowMenu] = useState(false);
+  const [query, setQuery] = useState("");
 
   return (
     <ThemeProvider theme={theme}>
@@ -20,8 +21,8 @@ const App = () => {
         <NavMenuContext.Provider value={[showMenu, setShowMenu]}>
           <GlobalStyle />
           <StyledNavBackground />
-          <Nav setTheme={setTheme} />
-          <Outlet />
+          <Nav setTheme={setTheme} setQuery={setQuery} query={query} />
+          <Outlet context={[query, setQuery]} />
         </NavMenuContext.Provider>
       </LoggedInContext.Provider>
     </ThemeProvider>

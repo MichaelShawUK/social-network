@@ -1,9 +1,9 @@
 import StyledPeople from "../styles/StyledPeople";
+import StyledSearchBarCard from "../styles/StyledSearchBarCard";
 import SearchBar from "./SearchBar";
 import useNavMenu from "../hooks/useNavMenu";
-import { useLoaderData } from "react-router-dom";
+import { useLoaderData, useOutletContext } from "react-router-dom";
 import Person from "./Person";
-import { useState } from "react";
 
 const People = () => {
   useNavMenu();
@@ -11,7 +11,7 @@ const People = () => {
   const friends = data.user.friends;
   const strangers = data.strangers;
 
-  const [query, setQuery] = useState("");
+  const [query, setQuery] = useOutletContext();
 
   const filteredFriends = filterUsers(friends, query);
   const filteredStrangers = filterUsers(strangers, query);
@@ -20,7 +20,9 @@ const People = () => {
 
   return (
     <>
-      <SearchBar setQuery={setQuery} />
+      <StyledSearchBarCard>
+        <SearchBar setQuery={setQuery} query={query} />
+      </StyledSearchBarCard>
       <StyledPeople>
         {totalUsers.length > 0 ? (
           <>

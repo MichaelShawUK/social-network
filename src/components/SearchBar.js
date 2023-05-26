@@ -1,21 +1,18 @@
-import StyledSearchBar from "../styles/StyledSearchBar";
 import { useNavigate } from "react-router-dom";
+import StyledSearchBar from "../styles/StyledSearchBar";
 
-const SearchBar = ({ setQuery }) => {
+const SearchBar2 = ({ setQuery, query }) => {
   const navigate = useNavigate();
+
   return (
-    <StyledSearchBar>
-      <input
-        type="text"
-        name="q"
-        placeholder="Find People..."
-        onSelect={() => {
-          navigate("/people");
-        }}
-        onChange={(e) => setQuery(e.target.value.toLowerCase())}
-      ></input>
-    </StyledSearchBar>
+    <StyledSearchBar
+      type="search"
+      placeholder="Find People..."
+      value={query}
+      onSelect={() => navigate("/people")}
+      onChange={(e) => setQuery(e.target.value)}
+    ></StyledSearchBar>
   );
 };
 
-export default SearchBar;
+export default SearchBar2;

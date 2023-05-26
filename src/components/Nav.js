@@ -7,15 +7,14 @@ import LoggedInContext from "../context/loggedIn";
 import { Link } from "react-router-dom";
 import logo from "../assets/images/logo.png";
 
-const Nav = ({ setTheme }) => {
+const Nav = ({ setTheme, setQuery, query }) => {
   const loggedIn = useContext(LoggedInContext)[0];
   return (
     <StyledNav>
       <Link to="/">
         <img src={logo} alt=""></img>
       </Link>
-      <input type="text" name="q" placeholder="Find People..."></input>
-      {/* <SearchBar /> */}
+      <SearchBar setQuery={setQuery} query={query} />
       <ThemeSlider setTheme={setTheme} />
       {loggedIn && <AvatarNav />}
     </StyledNav>
