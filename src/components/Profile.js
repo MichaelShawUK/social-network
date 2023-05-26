@@ -12,6 +12,8 @@ const Profile = () => {
   const { userId } = useParams();
   const ownProfile = userId === localStorage.getItem("userId");
 
+  const [update, setUpdate] = useState(false);
+
   const [user, setUser] = useState({ friends: [] });
   const [posts, setPosts] = useState([]);
 
@@ -26,14 +28,18 @@ const Profile = () => {
       setPosts(response.data.posts);
     }
     getProfile(userId);
-  }, [userId]);
+  }, [userId, update]);
 
   useNavMenu();
 
   return (
     <div>
       <FriendsCard user={user} />
-      {ownProfile ? <EditProfile /> : <FriendRequest user={user} />}
+      {ownProfile ? (
+        <EditProfile setUpdate={setUpdate} update={update} />
+      ) : (
+        <FriendRequest user={user} />
+      )}
       {posts.map((post) => {
         return <PostCard post={post} key={post._id} />;
       })}

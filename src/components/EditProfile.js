@@ -6,10 +6,12 @@ import { useState, useEffect } from "react";
 import { useFetcher } from "react-router-dom";
 import axios from "axios";
 import { database } from "../data/constants";
+import useLocalStorage from "../hooks/useLocalStorage";
 
-const EditProfile = () => {
-  const firstName = localStorage.getItem("firstName");
-  const lastName = localStorage.getItem("lastName");
+const EditProfile = ({ update, setUpdate }) => {
+  const [firstName, setFirstName] = useLocalStorage("firstName", "");
+  const [lastName, setLastName] = useLocalStorage("lastName", "");
+  const setAvatar = useLocalStorage("avatar", "")[1];
 
   const [imageUrl, setImageUrl] = useState("");
   const [isLoading, setIsLoading] = useState(false);
@@ -18,12 +20,18 @@ const EditProfile = () => {
 
   useEffect(() => {
     async function updateUser(data) {
-      await axios({
+      const response = await axios({
         method: "POST",
         url: `${database}/edit`,
         headers: { Authorization: `Bearer ${localStorage.token}` },
         data,
       });
+
+      setFirstName(response.data.user.firstName);
+      setLastName(response.data.user.lastName);
+      setAvatar(response.data.user.avatar);
+
+      setUpdate(!update);
     }
 
     function isEdited(formData) {
@@ -45,7 +53,7 @@ const EditProfile = () => {
         updateUser(formData);
       }
     }
-  }, [fetcher]);
+  }, [fetcher, setFirstName, setLastName, setAvatar, setUpdate, update]);
 
   return (
     <StyledEditProfile>
