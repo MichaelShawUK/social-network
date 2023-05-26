@@ -1,5 +1,6 @@
 import StyledEditProfile from "../styles/StyledEditProfile";
 import StyledButton from "../styles/StyledButton";
+import Loading from "./Loading";
 import uploadImage from "../utils/cloudinary";
 import { useState } from "react";
 
@@ -8,6 +9,7 @@ const EditProfile = () => {
   const lastName = localStorage.getItem("lastName");
 
   const [imageUrl, setImageUrl] = useState("");
+  const [isLoading, setIsLoading] = useState(false);
 
   return (
     <StyledEditProfile>
@@ -44,23 +46,24 @@ const EditProfile = () => {
       ) : (
         <input
           type="file"
-          // accept=".jpg, .jpeg, .png"
           accept="image/*"
           id="avatar"
           name="avatar"
           onChange={(e) => {
+            setIsLoading(true);
             const reader = new FileReader();
             reader.readAsDataURL(e.target.files[0]);
             reader.onerror = () => console.log("Failed to convert to base64");
             reader.onload = async () => {
               const { data } = await uploadImage(reader.result);
               setImageUrl(data.secure_url);
+              setIsLoading(false);
             };
           }}
         ></input>
       )}
       <input hidden type="text" name="imageUrl" value={imageUrl}></input>
-      <StyledButton>Update</StyledButton>
+      {isLoading ? <Loading /> : <StyledButton>Update</StyledButton>}
     </StyledEditProfile>
   );
 };
