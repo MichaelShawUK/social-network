@@ -1,18 +1,49 @@
 import StyledPostPrompt from "../styles/StyledPostPrompt";
 import StyledButton from "../styles/StyledButton";
 import uploadImage from "../utils/cloudinary";
-import { useState } from "react";
+import { useState, useEffect, useRef } from "react";
 import Loading from "./Loading";
+import { useFetcher } from "react-router-dom";
+import axios from "axios";
+import { database } from "../data/constants";
 
-const PostPrompt = () => {
+const PostPrompt = ({ setPosts }) => {
   const firstName = localStorage.getItem("firstName");
   const [isLoading, setIsLoading] = useState(false);
   const [imageUrl, setImageUrl] = useState("");
 
+  const textInputRef = useRef(null);
+
+  let fetcher = useFetcher();
+
+  useEffect(() => {
+    async function uploadPost(data) {
+      const response = await axios({
+        method: "POST",
+        url: `${database}/post`,
+        headers: { Authorization: `Bearer ${localStorage.token}` },
+        data,
+      });
+      textInputRef.current.value = "";
+      setImageUrl("");
+      setIsLoading(false);
+      setPosts(response.data.posts);
+    }
+
+    if (fetcher.formData) {
+      setIsLoading(true);
+      const { text, image } = Object.fromEntries(fetcher.formData);
+      if (text || image) {
+        uploadPost({ text, image });
+      }
+    }
+  }, [fetcher, setPosts]);
+
   return (
     <StyledPostPrompt>
-      <form>
+      <fetcher.Form>
         <input
+          ref={textInputRef}
           placeholder={`What's on your mind, ${firstName}?`}
           className="textInput"
           type="text"
@@ -51,7 +82,7 @@ const PostPrompt = () => {
           value={imageUrl}
         ></input>
         {isLoading ? <Loading /> : <StyledButton>Post</StyledButton>}
-      </form>
+      </fetcher.Form>
       {imageUrl && (
         <div className="flexContainer">
           <div className="imageContainer">
