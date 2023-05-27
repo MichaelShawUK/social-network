@@ -9,27 +9,37 @@ const StyledPostPrompt = styled.div`
   margin: 0 auto;
   border-radius: 4px;
 
-  > form {
+  .fileLabel {
+    font-weight: bold;
+    cursor: pointer;
+    padding: 0.5rem;
+    grid-area: image;
+    grid-column: 1/-1;
+    justify-self: center;
+    margin-top: 0.5rem;
+  }
+
+  .camera {
+    vertical-align: 2px;
+  }
+
+  form {
     background-color: ${(props) => props.theme.secondary};
     display: grid;
-    grid-template-columns: 1fr 150px;
+    grid-template:
+      "text button" 1fr
+      "image image" 1fr / 1fr 150px;
     align-items: center;
 
     > button {
       width: max-content;
       height: min-content;
       justify-self: flex-end;
+      grid-area: button;
     }
   }
 
-  > div {
-    background-color: ${(props) => props.theme.secondary};
-    margin-top: 1rem;
-    display: flex;
-    justify-content: center;
-  }
-
-  input {
+  .textInput {
     background-color: ${(props) => props.theme.bg};
     padding: 12px;
     border-radius: 6px;
@@ -37,6 +47,7 @@ const StyledPostPrompt = styled.div`
     width: 100%;
     font-size: 1rem;
     color: inherit;
+    grid-area: text;
 
     &:focus-visible {
       outline: 1px solid ${(props) => props.theme.fg};
@@ -47,17 +58,17 @@ const StyledPostPrompt = styled.div`
     padding: 1rem;
     border-radius: 0;
 
-    > form {
+    .fileLabel {
+      margin-top: 0;
+    }
+
+    form {
       display: flex;
       flex-direction: column;
       gap: 0.5rem;
     }
 
-    > div {
-      margin-top: 0.5rem;
-    }
-
-    input {
+    .textInput {
       font-size: 14px;
     }
   }

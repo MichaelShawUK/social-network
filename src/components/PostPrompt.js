@@ -9,14 +9,17 @@ const PostPrompt = () => {
       <form>
         <input
           placeholder={`What's on your mind, ${firstName}?`}
+          className="textInput"
           type="text"
+          name="text"
           autoFocus
         ></input>
-        <StyledButton>Make Post</StyledButton>
+        <label htmlFor="image" className="fileLabel">
+          Add Photo <span className="camera">&#128248;</span>
+        </label>
+        <input id="image" name="image" type="file" hidden></input>
+        <StyledButton>Post</StyledButton>
       </form>
-      <div>
-        <StyledButton>Add Photo</StyledButton>
-      </div>
     </StyledPostPrompt>
   );
 };
