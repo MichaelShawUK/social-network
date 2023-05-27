@@ -1,17 +1,49 @@
 import StyledButton from "../styles/StyledButton";
 import StyledCommentForm from "../styles/StyledCommentForm";
+import { useFetcher } from "react-router-dom";
+import { useEffect, useRef } from "react";
+import axios from "axios";
+import { database } from "../data/constants";
 
-const CommentForm = () => {
+const CommentForm = ({ postId, setIsLoading, update, setUpdate }) => {
+  let fetcher = useFetcher();
+
+  const textInputRef = useRef(null);
+
+  useEffect(() => {
+    async function uploadComment(data) {
+      await axios({
+        method: "POST",
+        url: `${database}/comment`,
+        headers: { Authorization: `Bearer ${localStorage.token}` },
+        data,
+      });
+      setIsLoading(false);
+      setUpdate(!update);
+      textInputRef.current.value = "";
+    }
+
+    if (fetcher.formData) {
+      const { text, post } = Object.fromEntries(fetcher.formData);
+      if (text) {
+        setIsLoading(true);
+        uploadComment({ text, post });
+      }
+    }
+  }, [fetcher, setIsLoading, setUpdate, update]);
+
   return (
     <StyledCommentForm>
-      <form>
+      <fetcher.Form>
         <input
           type="text"
-          name="comment"
+          name="text"
           placeholder="Write a comment..."
+          ref={textInputRef}
         ></input>
+        <input type="text" name="post" hidden readOnly value={postId}></input>
         <StyledButton>Comment</StyledButton>
-      </form>
+      </fetcher.Form>
     </StyledCommentForm>
   );
 };

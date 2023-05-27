@@ -4,8 +4,9 @@ import { useEffect, useState } from "react";
 import axios from "axios";
 import { database } from "../data/constants";
 
-const CommentSection = ({ postId }) => {
+const CommentSection = ({ postId, setIsLoading }) => {
   const [comments, setComments] = useState([]);
+  const [update, setUpdate] = useState(false);
 
   useEffect(() => {
     async function fetchComments() {
@@ -20,10 +21,15 @@ const CommentSection = ({ postId }) => {
     }
 
     fetchComments();
-  }, [postId]);
+  }, [postId, update]);
   return (
     <>
-      <CommentForm />
+      <CommentForm
+        postId={postId}
+        setIsLoading={setIsLoading}
+        update={update}
+        setUpdate={setUpdate}
+      />
       {comments.length > 0 ? (
         comments.map((comment) => {
           return <Comment comment={comment} key={comment._id} />;
