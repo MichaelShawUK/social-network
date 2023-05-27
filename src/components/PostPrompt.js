@@ -2,7 +2,7 @@ import StyledPostPrompt from "../styles/StyledPostPrompt";
 import StyledButton from "../styles/StyledButton";
 import uploadImage from "../utils/cloudinary";
 import { useState, useEffect, useRef } from "react";
-import Loading from "./Loading";
+import LoadingCard from "./LoadingCard";
 import { useFetcher } from "react-router-dom";
 import axios from "axios";
 import { database } from "../data/constants";
@@ -81,7 +81,7 @@ const PostPrompt = ({ setPosts }) => {
           name="image"
           value={imageUrl}
         ></input>
-        {isLoading ? <Loading /> : <StyledButton>Post</StyledButton>}
+        <StyledButton>Post</StyledButton>
       </fetcher.Form>
       {imageUrl && (
         <div className="flexContainer">
@@ -93,6 +93,7 @@ const PostPrompt = ({ setPosts }) => {
           </div>
         </div>
       )}
+      {isLoading && <LoadingCard />}
     </StyledPostPrompt>
   );
 };

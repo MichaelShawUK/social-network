@@ -9,6 +9,27 @@ const StyledPostPrompt = styled.div`
   margin: 0 auto;
   border-radius: 4px;
 
+  position: relative;
+
+  .loadingContainer {
+    background-color: ${(props) => props.theme.secondary};
+    position: absolute;
+    left: 0;
+    right: 0;
+    top: 0;
+    bottom: 0;
+    border-radius: 4px;
+    opacity: 0.8;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
+    * {
+      background-color: ${(props) => props.theme.secondary};
+      border-radius: 4px;
+    }
+  }
+
   .fileLabel {
     font-weight: bold;
     cursor: pointer;
