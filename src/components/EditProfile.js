@@ -1,6 +1,6 @@
 import StyledEditProfile from "../styles/StyledEditProfile";
 import StyledButton from "../styles/StyledButton";
-import Loading from "./Loading";
+import LoadingCard from "./LoadingCard";
 import uploadImage from "../utils/cloudinary";
 import { useState, useEffect } from "react";
 import { useFetcher } from "react-router-dom";
@@ -20,6 +20,7 @@ const EditProfile = ({ update, setUpdate }) => {
 
   useEffect(() => {
     async function updateUser(data) {
+      setIsLoading(true);
       const response = await axios({
         method: "POST",
         url: `${database}/edit`,
@@ -30,7 +31,7 @@ const EditProfile = ({ update, setUpdate }) => {
       setFirstName(response.data.user.firstName);
       setLastName(response.data.user.lastName);
       setAvatar(response.data.user.avatar);
-
+      setIsLoading(false);
       setUpdate(!update);
     }
 
@@ -121,8 +122,9 @@ const EditProfile = ({ update, setUpdate }) => {
           name="userId"
           value={localStorage.getItem("userId")}
         ></input>
-        {isLoading ? <Loading /> : <StyledButton>Update</StyledButton>}
+        <StyledButton>Update</StyledButton>
       </fetcher.Form>
+      {isLoading && <LoadingCard />}
     </StyledEditProfile>
   );
 };
