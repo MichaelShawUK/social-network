@@ -11,17 +11,20 @@ const PostFooter = ({
   post,
   update,
   setUpdate,
+  setIsLoading,
 }) => {
   const liked = post.likes.includes(localStorage.getItem("userId"));
 
   async function handleLike() {
+    setIsLoading(true);
+
     await axios({
       method: "POST",
       url: `${database}/like`,
       headers: { Authorization: `Bearer ${localStorage.token}` },
       data: { post: post._id },
     });
-
+    setIsLoading(false);
     setUpdate(!update);
   }
 

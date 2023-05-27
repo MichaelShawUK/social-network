@@ -12,8 +12,29 @@ const StyledPostCard = styled.div`
   margin: 1.5rem auto;
   border-radius: 4px;
 
+  position: relative;
+
   * {
     background-color: ${(props) => props.theme.secondary};
+  }
+
+  .loadingContainer {
+    background-color: ${(props) => props.theme.secondary};
+    position: absolute;
+    left: 0;
+    right: 0;
+    top: 0;
+    bottom: 0;
+    border-radius: 4px;
+    opacity: 0.8;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
+    * {
+      background-color: ${(props) => props.theme.secondary};
+      border-radius: 4px;
+    }
   }
 
   .post-text {

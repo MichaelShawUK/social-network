@@ -3,9 +3,11 @@ import PostHeader from "./PostHeader";
 import PostFooter from "./PostFooter";
 import CommentSection from "./CommentSection";
 import { useState } from "react";
+import Loading from "./Loading";
 
 const PostCard = ({ post, update, setUpdate }) => {
   const [showComments, setShowComments] = useState(false);
+  const [isLoading, setIsLoading] = useState(false);
 
   return (
     <StyledPostCard>
@@ -22,7 +24,13 @@ const PostCard = ({ post, update, setUpdate }) => {
         post={post}
         update={update}
         setUpdate={setUpdate}
+        setIsLoading={setIsLoading}
       />
+      {isLoading && (
+        <div className="loadingContainer">
+          <Loading />
+        </div>
+      )}
       {showComments && <CommentSection postId={post._id} />}
     </StyledPostCard>
   );

@@ -10,6 +10,7 @@ const StyledPostFooter = styled.footer`
     cursor: pointer;
     &:hover {
       background-color: ${(props) => props.theme.hover};
+      border-radius: 4px;
     }
   }
 
