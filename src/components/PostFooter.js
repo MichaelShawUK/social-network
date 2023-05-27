@@ -2,17 +2,35 @@ import StyledPostFooter from "../styles/StyledPostFooter";
 import LikeFill from "../assets/svg/LikeFill";
 import LikeOutline from "../assets/svg/LikeOutline";
 import CommentIcon from "../assets/svg/CommentIcon";
-import { useState } from "react";
+import axios from "axios";
+import { database } from "../data/constants";
 
-const PostFooter = ({ showComments, setShowComments }) => {
-  const [liked, setLiked] = useState(false);
+const PostFooter = ({
+  showComments,
+  setShowComments,
+  post,
+  update,
+  setUpdate,
+}) => {
+  const liked = post.likes.includes(localStorage.getItem("userId"));
+
+  async function handleLike() {
+    await axios({
+      method: "POST",
+      url: `${database}/like`,
+      headers: { Authorization: `Bearer ${localStorage.token}` },
+      data: { post: post._id },
+    });
+
+    setUpdate(!update);
+  }
 
   return (
     <StyledPostFooter>
       {liked ? (
-        <LikeFill setLiked={setLiked} />
+        <LikeFill handleLike={handleLike} />
       ) : (
-        <LikeOutline setLiked={setLiked} />
+        <LikeOutline handleLike={handleLike} />
       )}
       <CommentIcon
         showComments={showComments}

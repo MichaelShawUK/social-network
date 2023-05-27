@@ -41,7 +41,14 @@ const Profile = () => {
         <FriendRequest user={user} />
       )}
       {posts.map((post) => {
-        return <PostCard post={post} key={post._id} />;
+        return (
+          <PostCard
+            post={post}
+            key={post._id}
+            update={update}
+            setUpdate={setUpdate}
+          />
+        );
       })}
     </div>
   );

@@ -12,7 +12,7 @@ const PostHeader = ({ post }) => {
         </div>
         <div className="time-since">{getRelativeTime(post.createdAt)}</div>
       </div>
-      <LikeCounter />
+      {post.likes.length > 0 && <LikeCounter post={post} />}
     </StyledPostHeader>
   );
 };

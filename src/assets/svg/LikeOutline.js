@@ -1,4 +1,4 @@
-const LikeOutline = ({ setLiked }) => {
+const LikeOutline = ({ setLiked, handleLike }) => {
   return (
     <svg
       version="1.1"
@@ -6,7 +6,8 @@ const LikeOutline = ({ setLiked }) => {
       width="32px"
       height="32px"
       viewBox="0,0,256,256"
-      onClick={() => setLiked(true)}
+      // onClick={() => setLiked(true)}
+      onClick={() => handleLike()}
     >
       <g fill="#f9a826" stroke="none">
         <g transform="scale(10.66667,10.66667)">

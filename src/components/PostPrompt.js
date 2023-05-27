@@ -31,9 +31,9 @@ const PostPrompt = ({ setPosts }) => {
     }
 
     if (fetcher.formData) {
-      setIsLoading(true);
       const { text, image } = Object.fromEntries(fetcher.formData);
       if (text || image) {
+        setIsLoading(true);
         uploadPost({ text, image });
       }
     }

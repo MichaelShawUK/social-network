@@ -4,7 +4,7 @@ import PostFooter from "./PostFooter";
 import CommentSection from "./CommentSection";
 import { useState } from "react";
 
-const PostCard = ({ post }) => {
+const PostCard = ({ post, update, setUpdate }) => {
   const [showComments, setShowComments] = useState(false);
 
   return (
@@ -19,6 +19,9 @@ const PostCard = ({ post }) => {
       <PostFooter
         showComments={showComments}
         setShowComments={setShowComments}
+        post={post}
+        update={update}
+        setUpdate={setUpdate}
       />
       {showComments && <CommentSection postId={post._id} />}
     </StyledPostCard>
