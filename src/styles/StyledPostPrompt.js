@@ -28,7 +28,7 @@ const StyledPostPrompt = styled.div`
     display: grid;
     grid-template:
       "text button" 1fr
-      "image image" 1fr / 1fr 150px;
+      "image image" auto / 1fr 150px;
     align-items: center;
 
     > button {
@@ -52,6 +52,36 @@ const StyledPostPrompt = styled.div`
     &:focus-visible {
       outline: 1px solid ${(props) => props.theme.fg};
     }
+  }
+
+  .flexContainer {
+    display: flex;
+    justify-content: center;
+    margin-top: 0.5rem;
+  }
+
+  .imageContainer {
+    position: relative;
+  }
+
+  .clearImage {
+    padding: 2px;
+    cursor: pointer;
+    border-radius: 2px;
+    position: absolute;
+    right: 0;
+    background-color: rgba(255, 255, 255, 0.5);
+    margin: 2px;
+
+    &:hover {
+      background-color: #fff;
+    }
+  }
+
+  .previewImage {
+    border-radius: 6px;
+    max-width: 100%;
+    object-fit: cover;
   }
 
   @media (max-width: 700px) {

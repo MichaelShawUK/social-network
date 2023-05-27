@@ -1,8 +1,13 @@
 import StyledPostPrompt from "../styles/StyledPostPrompt";
 import StyledButton from "../styles/StyledButton";
+import uploadImage from "../utils/cloudinary";
+import { useState } from "react";
+import Loading from "./Loading";
 
 const PostPrompt = () => {
   const firstName = localStorage.getItem("firstName");
+  const [isLoading, setIsLoading] = useState(false);
+  const [imageUrl, setImageUrl] = useState("");
 
   return (
     <StyledPostPrompt>
@@ -14,12 +19,49 @@ const PostPrompt = () => {
           name="text"
           autoFocus
         ></input>
-        <label htmlFor="image" className="fileLabel">
-          Add Photo <span className="camera">&#128248;</span>
-        </label>
-        <input id="image" name="image" type="file" hidden></input>
-        <StyledButton>Post</StyledButton>
+        {!imageUrl && (
+          <label htmlFor="imageFile" className="fileLabel">
+            Add Photo
+            <span className="camera"> &#128248;</span>
+          </label>
+        )}
+        <input
+          id="imageFile"
+          type="file"
+          hidden
+          onChange={(e) => {
+            if (e.target?.files.length > 0) {
+              setIsLoading(true);
+              const reader = new FileReader();
+              reader.readAsDataURL(e.target.files[0]);
+              reader.onerror = () => console.log("Failed to convert to base64");
+              reader.onload = async () => {
+                const { data } = await uploadImage(reader.result);
+                setImageUrl(data.secure_url);
+                setIsLoading(false);
+              };
+            }
+          }}
+        ></input>
+        <input
+          hidden
+          readOnly
+          type="text"
+          name="image"
+          value={imageUrl}
+        ></input>
+        {isLoading ? <Loading /> : <StyledButton>Post</StyledButton>}
       </form>
+      {imageUrl && (
+        <div className="flexContainer">
+          <div className="imageContainer">
+            <div className="clearImage" onClick={() => setImageUrl("")}>
+              &#10060;
+            </div>
+            <img className="previewImage" src={imageUrl} alt=""></img>
+          </div>
+        </div>
+      )}
     </StyledPostPrompt>
   );
 };
