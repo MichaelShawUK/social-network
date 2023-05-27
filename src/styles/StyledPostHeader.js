@@ -2,7 +2,7 @@ import { styled } from "styled-components";
 
 const StyledPostHeader = styled.header`
   display: grid;
-  grid-template-columns: 60px 1fr;
+  grid-template-columns: 60px 1fr 32px;
   gap: 1rem;
   height: 60px;
   margin-bottom: 1rem;

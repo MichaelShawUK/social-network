@@ -1,5 +1,6 @@
 import StyledPostHeader from "../styles/StyledPostHeader";
 import getRelativeTime from "../utils/getRelativeTime";
+import LikeCounter from "./LikeCounter";
 
 const PostHeader = ({ post }) => {
   return (
@@ -11,6 +12,7 @@ const PostHeader = ({ post }) => {
         </div>
         <div className="time-since">{getRelativeTime(post.createdAt)}</div>
       </div>
+      <LikeCounter />
     </StyledPostHeader>
   );
 };
