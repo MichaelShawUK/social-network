@@ -1,7 +1,8 @@
 import StyledButton from "../styles/StyledButton";
+import LoadingCard from "./LoadingCard";
 import StyledFriendRequest from "../styles/StyledFriendRequest";
 import { useFetcher } from "react-router-dom";
-import { useEffect } from "react";
+import { useEffect, useState } from "react";
 import axios from "axios";
 import { database } from "../data/constants";
 
@@ -14,6 +15,8 @@ const FriendRequest = ({ user, update, setUpdate }) => {
   const friendRequestIds = user.friendRequests.map((request) => request._id);
   const isRequestPending = friendRequestIds.includes(loggedInUserId);
 
+  const [isLoading, setIsLoading] = useState(false);
+
   let fetcher = useFetcher();
 
   useEffect(() => {
@@ -24,6 +27,7 @@ const FriendRequest = ({ user, update, setUpdate }) => {
         headers: { Authorization: `Bearer ${localStorage.token}` },
         data: { friend: user._id },
       });
+      setIsLoading(false);
       setUpdate(!update);
     }
 
@@ -34,11 +38,13 @@ const FriendRequest = ({ user, update, setUpdate }) => {
         headers: { Authorization: `Bearer ${localStorage.token}` },
         data: { receiver: user._id },
       });
+      setIsLoading(false);
       setUpdate(!update);
     }
 
     if (fetcher.formData) {
       const formData = Object.fromEntries(fetcher.formData);
+      setIsLoading(true);
 
       if (Object.keys(formData).includes("isFriend")) {
         unfriendUsers();
@@ -79,6 +85,7 @@ const FriendRequest = ({ user, update, setUpdate }) => {
           )}
         </fetcher.Form>
       )}
+      {isLoading && <LoadingCard />}
     </StyledFriendRequest>
   );
 };

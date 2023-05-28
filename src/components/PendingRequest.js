@@ -4,7 +4,7 @@ import { useEffect } from "react";
 import axios from "axios";
 import { database } from "../data/constants";
 
-const PendingRequest = ({ request, update, setUpdate }) => {
+const PendingRequest = ({ request, update, setUpdate, setIsLoading }) => {
   let fetcher = useFetcher();
 
   useEffect(() => {
@@ -15,6 +15,7 @@ const PendingRequest = ({ request, update, setUpdate }) => {
         headers: { Authorization: `Bearer ${localStorage.token}` },
         data: { friend: request._id },
       });
+      setIsLoading(false);
       setUpdate(!update);
     }
 
@@ -25,11 +26,13 @@ const PendingRequest = ({ request, update, setUpdate }) => {
         headers: { Authorization: `Bearer ${localStorage.token}` },
         data: { sender: request._id },
       });
+      setIsLoading(false);
       setUpdate(!update);
     }
 
     if (fetcher.formData) {
       const formData = Object.fromEntries(fetcher.formData);
+      setIsLoading(true);
 
       if (Object.keys(formData).includes("accept")) {
         acceptRequest();
@@ -37,7 +40,7 @@ const PendingRequest = ({ request, update, setUpdate }) => {
         rejectRequest();
       }
     }
-  }, [fetcher, request, update, setUpdate]);
+  }, [fetcher, request, update, setUpdate, setIsLoading]);
 
   return (
     <StyledPendingRequest>
