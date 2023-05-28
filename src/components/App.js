@@ -11,7 +11,9 @@ import NavMenuContext from "../context/navMenu";
 
 const App = () => {
   const [theme, setTheme] = useState(lightTheme);
-  const [loggedIn, setLoggedIn] = useState(true);
+  const [loggedIn, setLoggedIn] = useState(
+    Boolean(localStorage.getItem("token"))
+  );
   const [showMenu, setShowMenu] = useState(false);
   const [query, setQuery] = useState("");
 

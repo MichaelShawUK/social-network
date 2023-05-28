@@ -14,7 +14,7 @@ const Nav = ({ setTheme, setQuery, query }) => {
       <Link to="/">
         <img src={logo} alt=""></img>
       </Link>
-      <SearchBar setQuery={setQuery} query={query} />
+      {loggedIn && <SearchBar setQuery={setQuery} query={query} />}
       <ThemeSlider setTheme={setTheme} />
       {loggedIn && <AvatarNav />}
     </StyledNav>

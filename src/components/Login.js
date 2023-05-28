@@ -4,9 +4,17 @@ import StyledLogin from "../styles/StyledLogin";
 import { Link, useActionData } from "react-router-dom";
 import useNavMenu from "../hooks/useNavMenu";
 import LoginSvg from "../assets/svg/LoginSvg";
+import { useEffect, useContext } from "react";
+import LoggedInContext from "../context/loggedIn";
 
 const Login = () => {
   const errors = useActionData();
+
+  const setLoggedIn = useContext(LoggedInContext)[1];
+
+  useEffect(() => {
+    setLoggedIn(false);
+  }, [setLoggedIn]);
 
   function handleDemo(e) {
     e.target.form[0].value = "Test";

@@ -2,12 +2,19 @@ import PostPrompt from "./PostPrompt";
 import PostCard from "./PostCard";
 import FriendsCard from "./FriendsCard";
 import { useLoaderData } from "react-router-dom";
-import { useState, useEffect } from "react";
+import { useState, useEffect, useContext } from "react";
+import LoggedInContext from "../context/loggedIn";
 import axios from "axios";
 import { database } from "../data/constants";
 
 const Home = () => {
   const data = useState(useLoaderData())[0];
+
+  const setLoggedIn = useContext(LoggedInContext)[1];
+  useEffect(() => {
+    setLoggedIn(true);
+  }, [setLoggedIn]);
+
   const user = data.user;
   const [posts, setPosts] = useState(data.posts);
 
