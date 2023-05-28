@@ -18,7 +18,6 @@ const loginAction = async ({ request }) => {
         },
       });
 
-      console.log(response.data);
       if (response?.data?.token) {
         localStorage.setItem("token", response.data.token);
         localStorage.setItem("userId", response.data.userId);

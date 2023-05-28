@@ -1,6 +1,7 @@
 import ThemeSlider from "./ThemeSlider";
 import AvatarNav from "./AvatarNav";
 import StyledNav from "../styles/StyledNav";
+import StyledLoggedOutNav from "../styles/StyledLoggedOutNav";
 import SearchBar from "./SearchBar";
 import { useContext } from "react";
 import LoggedInContext from "../context/loggedIn";
@@ -10,14 +11,25 @@ import logo from "../assets/images/logo.png";
 const Nav = ({ setTheme, setQuery, query }) => {
   const loggedIn = useContext(LoggedInContext)[0];
   return (
-    <StyledNav>
-      <Link to="/">
-        <img src={logo} alt=""></img>
-      </Link>
-      {loggedIn && <SearchBar setQuery={setQuery} query={query} />}
-      <ThemeSlider setTheme={setTheme} />
-      {loggedIn && <AvatarNav />}
-    </StyledNav>
+    <>
+      {loggedIn ? (
+        <StyledNav>
+          <Link to="/">
+            <img src={logo} alt=""></img>
+          </Link>
+          <SearchBar setQuery={setQuery} query={query} />
+          <ThemeSlider setTheme={setTheme} />
+          <AvatarNav />
+        </StyledNav>
+      ) : (
+        <StyledLoggedOutNav>
+          <Link to="/">
+            <img src={logo} alt=""></img>
+          </Link>
+          <ThemeSlider setTheme={setTheme} />
+        </StyledLoggedOutNav>
+      )}
+    </>
   );
 };
 
