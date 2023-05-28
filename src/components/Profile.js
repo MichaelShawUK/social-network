@@ -2,6 +2,7 @@ import EditProfile from "./EditProfile";
 import FriendsCard from "./FriendsCard";
 import PostCard from "./PostCard";
 import FriendRequest from "./FriendRequest";
+import PendingRequestsCard from "./PendingRequestsCard";
 import useNavMenu from "../hooks/useNavMenu";
 import { useParams } from "react-router-dom";
 import { useEffect, useState } from "react";
@@ -14,8 +15,10 @@ const Profile = () => {
 
   const [update, setUpdate] = useState(false);
 
-  const [user, setUser] = useState({ friends: [] });
+  const [user, setUser] = useState({ friends: [], friendRequests: [] });
   const [posts, setPosts] = useState([]);
+
+  const hasFriendRequest = user.friendRequests.length > 0;
 
   useEffect(() => {
     async function getProfile(userId) {
@@ -35,10 +38,17 @@ const Profile = () => {
   return (
     <div>
       <FriendsCard user={user} />
+      {hasFriendRequest && ownProfile && (
+        <PendingRequestsCard
+          requests={user.friendRequests}
+          update={update}
+          setUpdate={setUpdate}
+        />
+      )}
       {ownProfile ? (
         <EditProfile setUpdate={setUpdate} update={update} />
       ) : (
-        <FriendRequest user={user} />
+        <FriendRequest user={user} update={update} setUpdate={setUpdate} />
       )}
       {posts.map((post) => {
         return (

@@ -12,6 +12,13 @@ const StyledFriendRequest = styled.div`
   flex-direction: column;
   align-items: center;
   gap: 0.5rem;
+  font-weight: bold;
+
+  .pending {
+    font-weight: normal;
+    font-style: italic;
+    text-align: center;
+  }
 
   img {
     width: 100px;
