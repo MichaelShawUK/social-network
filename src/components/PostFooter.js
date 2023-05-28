@@ -1,7 +1,7 @@
 import StyledPostFooter from "../styles/StyledPostFooter";
 import LikeFill from "../assets/svg/LikeFill";
 import LikeOutline from "../assets/svg/LikeOutline";
-import CommentIcon from "../assets/svg/CommentIcon";
+import CommentFill from "../assets/svg/CommentFill";
 import axios from "axios";
 import { database } from "../data/constants";
 
@@ -35,7 +35,7 @@ const PostFooter = ({
       ) : (
         <LikeOutline handleLike={handleLike} />
       )}
-      <CommentIcon
+      <CommentFill
         showComments={showComments}
         setShowComments={setShowComments}
       />
