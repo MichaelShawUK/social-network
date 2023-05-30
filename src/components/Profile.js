@@ -50,7 +50,9 @@ const Profile = () => {
       ) : (
         <FriendRequest user={user} update={update} setUpdate={setUpdate} />
       )}
-      <div className="postcards-header">{user.firstName}'s Posts</div>
+      {posts.length > 0 && (
+        <div className="postcards-header">{user.firstName}'s Posts</div>
+      )}
       {posts.map((post) => {
         return (
           <PostCard
