@@ -20,6 +20,13 @@ const GlobalStyle = createGlobalStyle`
   .error {
     color: red;
   }
+
+  .postcards-header {
+    text-align: center;
+    font-weight: bold;
+    margin-top: 1.5rem;
+  }
+
 `;
 
 export default GlobalStyle;

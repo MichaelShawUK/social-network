@@ -36,6 +36,7 @@ const Home = () => {
     <>
       <FriendsCard user={user} />
       <PostPrompt setPosts={setPosts} />
+      <div className="postcards-header">Your Timeline</div>
       {posts.map((post) => {
         return (
           <PostCard
