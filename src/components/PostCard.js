@@ -28,7 +28,12 @@ const PostCard = ({ post, update, setUpdate }) => {
       />
       {isLoading && <LoadingCard />}
       {showComments && (
-        <CommentSection postId={post._id} setIsLoading={setIsLoading} />
+        <CommentSection
+          postId={post._id}
+          setIsLoading={setIsLoading}
+          updatePost={update}
+          setUpdatePost={setUpdate}
+        />
       )}
     </StyledPostCard>
   );

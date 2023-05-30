@@ -5,7 +5,14 @@ import { useEffect, useRef } from "react";
 import axios from "axios";
 import { database } from "../data/constants";
 
-const CommentForm = ({ postId, setIsLoading, update, setUpdate }) => {
+const CommentForm = ({
+  postId,
+  setIsLoading,
+  update,
+  setUpdate,
+  updatePost,
+  setUpdatePost,
+}) => {
   let fetcher = useFetcher();
 
   const textInputRef = useRef(null);
@@ -20,6 +27,7 @@ const CommentForm = ({ postId, setIsLoading, update, setUpdate }) => {
       });
       setIsLoading(false);
       setUpdate(!update);
+      setUpdatePost(!updatePost);
       textInputRef.current.value = "";
     }
 
@@ -30,7 +38,7 @@ const CommentForm = ({ postId, setIsLoading, update, setUpdate }) => {
         uploadComment({ text, post });
       }
     }
-  }, [fetcher, setIsLoading, setUpdate, update]);
+  }, [fetcher, setIsLoading, setUpdate, update, updatePost, setUpdatePost]);
 
   return (
     <StyledCommentForm>

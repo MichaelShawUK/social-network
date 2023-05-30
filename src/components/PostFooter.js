@@ -2,6 +2,7 @@ import StyledPostFooter from "../styles/StyledPostFooter";
 import LikeFill from "../assets/svg/LikeFill";
 import LikeOutline from "../assets/svg/LikeOutline";
 import CommentFill from "../assets/svg/CommentFill";
+import CommentOutline from "../assets/svg/CommentOutline";
 import axios from "axios";
 import { database } from "../data/constants";
 
@@ -35,10 +36,17 @@ const PostFooter = ({
       ) : (
         <LikeOutline handleLike={handleLike} />
       )}
-      <CommentFill
-        showComments={showComments}
-        setShowComments={setShowComments}
-      />
+      {post.hasComment ? (
+        <CommentFill
+          showComments={showComments}
+          setShowComments={setShowComments}
+        />
+      ) : (
+        <CommentOutline
+          showComments={showComments}
+          setShowComments={setShowComments}
+        />
+      )}
     </StyledPostFooter>
   );
 };

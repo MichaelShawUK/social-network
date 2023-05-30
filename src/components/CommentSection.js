@@ -4,7 +4,12 @@ import { useEffect, useState } from "react";
 import axios from "axios";
 import { database } from "../data/constants";
 
-const CommentSection = ({ postId, setIsLoading }) => {
+const CommentSection = ({
+  postId,
+  setIsLoading,
+  updatePost,
+  setUpdatePost,
+}) => {
   const [comments, setComments] = useState([]);
   const [update, setUpdate] = useState(false);
 
@@ -29,6 +34,8 @@ const CommentSection = ({ postId, setIsLoading }) => {
         setIsLoading={setIsLoading}
         update={update}
         setUpdate={setUpdate}
+        updatePost={updatePost}
+        setUpdatePost={setUpdatePost}
       />
       {comments.length > 0 ? (
         comments.map((comment) => {
