@@ -12,7 +12,9 @@ const homeLoader = async () => {
     headers: { Authorization: `Bearer ${localStorage.token}` },
   });
 
-  // console.log(data);
+  if (data.message === "invalid token") {
+    return redirect("/login");
+  }
 
   return data;
 };

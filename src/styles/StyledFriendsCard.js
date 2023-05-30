@@ -10,8 +10,9 @@ const StyledFriendsCard = styled.div`
   position: fixed;
   width: 300px;
   margin-left: 1rem;
-  max-height: 600px;
+  max-height: 490px;
   overflow-y: auto;
+  min-height: 53px;
 
   button {
     margin: 0;
@@ -59,6 +60,12 @@ const StyledFriendsCard = styled.div`
     height: auto;
     max-height: 100%;
 
+    .friends {
+      display: flex;
+      margin-top: 2rem;
+      justify-content: flex-start;
+    }
+
     .hide {
       display: none;
     }
@@ -69,12 +76,7 @@ const StyledFriendsCard = styled.div`
 
     .header {
       cursor: pointer;
-    }
-  }
-
-  @media (max-width: 800px) {
-    .friends {
-      justify-content: space-between;
+      position: fixed;
     }
   }
 
