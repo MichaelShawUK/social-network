@@ -12,8 +12,8 @@ const homeLoader = async () => {
     headers: { Authorization: `Bearer ${localStorage.token}` },
   });
 
-  if (data.message === "invalid token") {
-    return redirect("/login");
+  if (data?.redirect) {
+    return redirect(data.redirect);
   }
 
   return data;
