@@ -4,6 +4,9 @@ import { Link } from "react-router-dom";
 const UserMenu = () => {
   return (
     <StyledUserMenu>
+      <Link to={"/"}>
+        <div className="link">Home</div>
+      </Link>
       <Link to={`/profile/${localStorage.getItem("userId")}`}>
         <div className="link">Profile</div>
       </Link>

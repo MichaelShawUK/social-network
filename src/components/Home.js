@@ -7,8 +7,10 @@ import LoggedInContext from "../context/loggedIn";
 import axios from "axios";
 import { database } from "../data/constants";
 import Loading from "./Loading";
+import useNavMenu from "../hooks/useNavMenu";
 
 const Home = () => {
+  useNavMenu();
   const setLoggedIn = useContext(LoggedInContext)[1];
 
   useEffect(() => {
