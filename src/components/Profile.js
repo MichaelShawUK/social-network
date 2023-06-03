@@ -25,6 +25,7 @@ const Profile = () => {
 
   useEffect(() => {
     async function getProfile(userId) {
+      setIsLoading(true);
       const response = await axios({
         url: `${database}/profile/${userId}`,
         headers: { Authorization: `Bearer ${localStorage.token}` },
