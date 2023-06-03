@@ -1,54 +1,67 @@
 import PostPrompt from "./PostPrompt";
 import PostCard from "./PostCard";
 import FriendsCard from "./FriendsCard";
-import { useLoaderData } from "react-router-dom";
+import { useNavigate } from "react-router-dom";
 import { useState, useEffect, useContext } from "react";
 import LoggedInContext from "../context/loggedIn";
 import axios from "axios";
 import { database } from "../data/constants";
+import Loading from "./Loading";
 
 const Home = () => {
-  const data = useState(useLoaderData())[0];
-
   const setLoggedIn = useContext(LoggedInContext)[1];
+
   useEffect(() => {
     setLoggedIn(true);
   }, [setLoggedIn]);
 
-  const user = data.user;
-  const [posts, setPosts] = useState(data.posts);
-
+  const [data, setData] = useState(null);
   const [update, setUpdate] = useState(false);
+
+  const navigate = useNavigate();
 
   useEffect(() => {
     async function getPosts() {
-      const response = await axios({
-        baseURL: database,
+      const { data } = await axios({
+        url: database,
         headers: { Authorization: `Bearer ${localStorage.token}` },
       });
 
-      setPosts(response.data.posts);
+      if (data?.redirect) {
+        navigate(data.redirect);
+      }
+
+      setData(data);
     }
     getPosts();
-  }, [update]);
+  }, [update, navigate]);
+
+  const user = data?.user;
+  const posts = data?.posts;
 
   return (
     <>
-      <FriendsCard user={user} />
-      <PostPrompt setPosts={setPosts} />
-      {posts.length > 0 && (
-        <div className="postcards-header">Your Timeline</div>
+      {!data ? (
+        <Loading />
+      ) : (
+        <>
+          <FriendsCard user={user} />
+          <PostPrompt setData={setData} />
+          {posts.length > 0 && (
+            <div className="postcards-header">Your Timeline</div>
+          )}
+          {posts.map((post) => {
+            return (
+              <PostCard
+                post={post}
+                key={post._id}
+                update={update}
+                setUpdate={setUpdate}
+              />
+            );
+          })}
+        </>
       )}
-      {posts.map((post) => {
-        return (
-          <PostCard
-            post={post}
-            key={post._id}
-            update={update}
-            setUpdate={setUpdate}
-          />
-        );
-      })}
     </>
   );
 };

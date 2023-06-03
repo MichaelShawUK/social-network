@@ -7,7 +7,7 @@ import { useFetcher } from "react-router-dom";
 import axios from "axios";
 import { database } from "../data/constants";
 
-const PostPrompt = ({ setPosts }) => {
+const PostPrompt = ({ setData }) => {
   const firstName = localStorage.getItem("firstName");
   const [isLoading, setIsLoading] = useState(false);
   const [imageUrl, setImageUrl] = useState("");
@@ -27,7 +27,7 @@ const PostPrompt = ({ setPosts }) => {
       textInputRef.current.value = "";
       setImageUrl("");
       setIsLoading(false);
-      setPosts(response.data.posts);
+      setData(response.data);
     }
 
     if (fetcher.formData) {
@@ -37,7 +37,7 @@ const PostPrompt = ({ setPosts }) => {
         uploadPost({ text, image });
       }
     }
-  }, [fetcher, setPosts]);
+  }, [fetcher, setData]);
 
   return (
     <StyledPostPrompt>
