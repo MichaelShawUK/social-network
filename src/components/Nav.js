@@ -3,13 +3,14 @@ import AvatarNav from "./AvatarNav";
 import StyledNav from "../styles/StyledNav";
 import StyledLoggedOutNav from "../styles/StyledLoggedOutNav";
 import SearchBar from "./SearchBar";
-import { useContext } from "react";
+import { useContext, useState } from "react";
 import LoggedInContext from "../context/loggedIn";
 import { Link } from "react-router-dom";
 import logo from "../assets/images/logo.png";
 
 const Nav = ({ setTheme, setQuery, query }) => {
   const loggedIn = useContext(LoggedInContext)[0];
+  const [checked, setChecked] = useState(false);
   return (
     <>
       {loggedIn ? (
@@ -18,7 +19,11 @@ const Nav = ({ setTheme, setQuery, query }) => {
             <img src={logo} alt=""></img>
           </Link>
           <SearchBar setQuery={setQuery} query={query} />
-          <ThemeSlider setTheme={setTheme} />
+          <ThemeSlider
+            setTheme={setTheme}
+            checked={checked}
+            setChecked={setChecked}
+          />
           <AvatarNav />
         </StyledNav>
       ) : (
@@ -26,7 +31,11 @@ const Nav = ({ setTheme, setQuery, query }) => {
           <Link to="/">
             <img src={logo} alt=""></img>
           </Link>
-          <ThemeSlider setTheme={setTheme} />
+          <ThemeSlider
+            setTheme={setTheme}
+            checked={checked}
+            setChecked={setChecked}
+          />
         </StyledLoggedOutNav>
       )}
     </>
