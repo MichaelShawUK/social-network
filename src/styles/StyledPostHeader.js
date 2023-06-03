@@ -16,6 +16,11 @@ const StyledPostHeader = styled.header`
     display: flex;
     flex-direction: column;
     justify-content: space-evenly;
+    width: max-content;
+
+    a {
+      text-decoration: none;
+    }
   }
   .author {
     font-weight: bold;
