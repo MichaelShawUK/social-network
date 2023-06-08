@@ -5,7 +5,7 @@ import uploadImage from "../utils/cloudinary";
 import { useState, useEffect } from "react";
 import { useFetcher } from "react-router-dom";
 import axios from "axios";
-import { database } from "../data/constants";
+import { database, demoUserId } from "../data/constants";
 import useLocalStorage from "../hooks/useLocalStorage";
 
 const EditProfile = ({ update, setUpdate }) => {
@@ -15,6 +15,7 @@ const EditProfile = ({ update, setUpdate }) => {
 
   const [imageUrl, setImageUrl] = useState("");
   const [isLoading, setIsLoading] = useState(false);
+  const [error, setError] = useState(false);
 
   let fetcher = useFetcher();
 
@@ -50,7 +51,9 @@ const EditProfile = ({ update, setUpdate }) => {
 
     if (fetcher.formData) {
       const formData = Object.fromEntries(fetcher.formData);
-      if (isEdited(formData)) {
+      if (localStorage.getItem("userId") === demoUserId) {
+        setError(true);
+      } else if (isEdited(formData)) {
         updateUser(formData);
       }
     }
@@ -123,6 +126,12 @@ const EditProfile = ({ update, setUpdate }) => {
           value={localStorage.getItem("userId")}
         ></input>
         <StyledButton>Update</StyledButton>
+        {error && (
+          <p className="error">
+            Profile editing is disabled for the demo. Create new account for
+            full functionality.
+          </p>
+        )}
       </fetcher.Form>
       {isLoading && <LoadingCard />}
     </StyledEditProfile>
