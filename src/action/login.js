@@ -3,7 +3,6 @@ import axios from "axios";
 import { redirect } from "react-router-dom";
 
 const loginAction = async ({ request }) => {
-  console.log("3 action runs");
   const errors = {};
   const { username, password } = Object.fromEntries(await request.formData());
 
