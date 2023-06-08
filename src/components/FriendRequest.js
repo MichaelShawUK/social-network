@@ -44,11 +44,8 @@ const FriendRequest = ({ user, update, setUpdate }) => {
     }
 
     if (fetcher.formData) {
-      if (false) {
-        setError(false);
-        console.log(demoUserId);
-        // if (localStorage.getItem("userId") === demoUserId) {
-        //   setError(true);
+      if (localStorage.getItem("userId") === demoUserId) {
+        setError(true);
       } else {
         const formData = Object.fromEntries(fetcher.formData);
         setIsLoading(true);

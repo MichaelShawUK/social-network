@@ -33,11 +33,8 @@ const PendingRequest = ({ request, update, setUpdate, setIsLoading }) => {
     }
 
     if (fetcher.formData) {
-      if (false) {
-        setError(false);
-        console.log(demoUserId);
-        // if (localStorage.getItem("userId") === demoUserId) {
-        //   setError(true);
+      if (localStorage.getItem("userId") === demoUserId) {
+        setError(true);
       } else {
         const formData = Object.fromEntries(fetcher.formData);
         setIsLoading(true);
