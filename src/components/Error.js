@@ -5,7 +5,7 @@ import StyledError from "../styles/StyledError";
 const Error = () => {
   return (
     <StyledError>
-      <h1>An Error has occurred</h1>
+      <h3>An error has occurred</h3>
       <img src={error} alt=""></img>
       <p>
         Return to <Link to="/">Home</Link>
