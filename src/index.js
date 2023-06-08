@@ -7,6 +7,7 @@ import Login from "./components/Login";
 import Home from "./components/Home";
 import Profile from "./components/Profile";
 import People from "./components/People";
+import Error from "./components/Error";
 
 import homeLoader from "./loader/home";
 import logoutLoader from "./loader/logout";
@@ -20,6 +21,7 @@ import registerAction from "./action/register";
 const router = createBrowserRouter([
   {
     element: <App />,
+    errorElement: <Error />,
     children: [
       {
         path: "/",
