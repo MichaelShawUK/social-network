@@ -1,11 +1,13 @@
 import StyledPendingRequest from "../styles/StyledPendingRequest";
 import { useFetcher } from "react-router-dom";
-import { useEffect } from "react";
+import { useEffect, useState } from "react";
 import axios from "axios";
-import { database } from "../data/constants";
+import { database, demoUserId } from "../data/constants";
 
 const PendingRequest = ({ request, update, setUpdate, setIsLoading }) => {
   let fetcher = useFetcher();
+
+  const [error, setError] = useState(false);
 
   useEffect(() => {
     async function acceptRequest() {
@@ -31,13 +33,17 @@ const PendingRequest = ({ request, update, setUpdate, setIsLoading }) => {
     }
 
     if (fetcher.formData) {
-      const formData = Object.fromEntries(fetcher.formData);
-      setIsLoading(true);
+      if (localStorage.getItem("userId") === demoUserId) {
+        setError(true);
+      } else {
+        const formData = Object.fromEntries(fetcher.formData);
+        setIsLoading(true);
 
-      if (Object.keys(formData).includes("accept")) {
-        acceptRequest();
-      } else if (Object.keys(formData).includes("reject")) {
-        rejectRequest();
+        if (Object.keys(formData).includes("accept")) {
+          acceptRequest();
+        } else if (Object.keys(formData).includes("reject")) {
+          rejectRequest();
+        }
       }
     }
   }, [fetcher, request, update, setUpdate, setIsLoading]);
@@ -81,6 +87,12 @@ const PendingRequest = ({ request, update, setUpdate, setIsLoading }) => {
         ></input>
         <button className="reject btn">Reject</button>
       </fetcher.Form>
+      {error && (
+        <p className="error center pad">
+          Handling friend requests is disabled for the demo. Create new account
+          for full functionality
+        </p>
+      )}
     </StyledPendingRequest>
   );
 };

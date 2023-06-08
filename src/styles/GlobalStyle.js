@@ -25,6 +25,10 @@ const GlobalStyle = createGlobalStyle`
     text-align: center;
   }
 
+  .pad {
+    padding-top: 0.5rem;
+  }
+
   .postcards-header {
     text-align: center;
     font-weight: bold;
