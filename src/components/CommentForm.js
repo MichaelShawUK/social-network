@@ -1,7 +1,7 @@
 import StyledButton from "../styles/StyledButton";
 import StyledCommentForm from "../styles/StyledCommentForm";
 import { useFetcher } from "react-router-dom";
-import { useEffect, useRef } from "react";
+import { useEffect, useRef, useState } from "react";
 import axios from "axios";
 import { database } from "../data/constants";
 
@@ -13,7 +13,9 @@ const CommentForm = ({
   updatePost,
   setUpdatePost,
 }) => {
-  let fetcher = useFetcher();
+  const fetcher = useFetcher();
+
+  const [error, setError] = useState("");
 
   const textInputRef = useRef(null);
 
@@ -33,8 +35,11 @@ const CommentForm = ({
 
     if (fetcher.formData) {
       const { text, post } = Object.fromEntries(fetcher.formData);
-      if (text) {
+      if (text.length > 300) {
+        setError("Maximum characters 300");
+      } else if (text) {
         setIsLoading(true);
+        setError("");
         uploadComment({ text, post });
       }
     }
@@ -52,6 +57,7 @@ const CommentForm = ({
         <input type="text" name="post" hidden readOnly value={postId}></input>
         <StyledButton>Comment</StyledButton>
       </fetcher.Form>
+      <p className="error">{error}</p>
     </StyledCommentForm>
   );
 };
