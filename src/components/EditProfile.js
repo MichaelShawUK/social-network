@@ -127,7 +127,7 @@ const EditProfile = ({ update, setUpdate }) => {
         ></input>
         <StyledButton>Update</StyledButton>
         {error && (
-          <p className="error">
+          <p className="error center">
             Profile editing is disabled for the demo. Create new account for
             full functionality.
           </p>

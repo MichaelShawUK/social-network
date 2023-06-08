@@ -21,6 +21,10 @@ const GlobalStyle = createGlobalStyle`
     color: red;
   }
 
+  .center {
+    text-align: center;
+  }
+
   .postcards-header {
     text-align: center;
     font-weight: bold;
