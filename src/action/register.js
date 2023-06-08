@@ -11,8 +11,12 @@ const registerAction = async ({ request }) => {
     errors.username = "Username is required";
   } else if (!firstName) {
     errors.firstName = "First name is required";
+  } else if (firstName.length > 25) {
+    errors.firstName = "Maximum characters 25";
   } else if (!lastName) {
     errors.lastName = "Last name is required";
+  } else if (lastName.length > 25) {
+    errors.lastName = "Maximum characters 25";
   } else if (!password) {
     errors.password = "Password is required";
   } else if (password !== confirmPassword) {
