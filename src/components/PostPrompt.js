@@ -11,6 +11,7 @@ const PostPrompt = ({ setData }) => {
   const firstName = localStorage.getItem("firstName");
   const [isLoading, setIsLoading] = useState(false);
   const [imageUrl, setImageUrl] = useState("");
+  const [error, setError] = useState("");
 
   const textInputRef = useRef(null);
 
@@ -32,8 +33,11 @@ const PostPrompt = ({ setData }) => {
 
     if (fetcher.formData) {
       const { text, image } = Object.fromEntries(fetcher.formData);
-      if (text || image) {
+      if (text.length > 1000) {
+        setError("Maximum characters 1000");
+      } else if (text || image) {
         setIsLoading(true);
+        setError("");
         uploadPost({ text, image });
       }
     }
@@ -83,6 +87,7 @@ const PostPrompt = ({ setData }) => {
         ></input>
         <StyledButton>Post</StyledButton>
       </fetcher.Form>
+      <p className="error">{error}</p>
       {imageUrl && (
         <div className="flexContainer">
           <div className="imageContainer">
