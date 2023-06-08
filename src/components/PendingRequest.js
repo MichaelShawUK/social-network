@@ -88,7 +88,7 @@ const PendingRequest = ({ request, update, setUpdate, setIsLoading }) => {
         <button className="reject btn">Reject</button>
       </fetcher.Form>
       {error && (
-        <p className="error center pad">
+        <p className="error center">
           Handling friend requests is disabled for the demo. Create new account
           for full functionality
         </p>

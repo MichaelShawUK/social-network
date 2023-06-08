@@ -4,7 +4,7 @@ import StyledFriendRequest from "../styles/StyledFriendRequest";
 import { useFetcher } from "react-router-dom";
 import { useEffect, useState } from "react";
 import axios from "axios";
-import { database } from "../data/constants";
+import { database, demoUserId } from "../data/constants";
 
 const FriendRequest = ({ user, update, setUpdate }) => {
   const loggedInUserId = localStorage.getItem("userId");
@@ -16,6 +16,7 @@ const FriendRequest = ({ user, update, setUpdate }) => {
   const isRequestPending = friendRequestIds.includes(loggedInUserId);
 
   const [isLoading, setIsLoading] = useState(false);
+  const [error, setError] = useState(false);
 
   let fetcher = useFetcher();
 
@@ -43,13 +44,17 @@ const FriendRequest = ({ user, update, setUpdate }) => {
     }
 
     if (fetcher.formData) {
-      const formData = Object.fromEntries(fetcher.formData);
-      setIsLoading(true);
-
-      if (Object.keys(formData).includes("isFriend")) {
-        unfriendUsers();
+      if (localStorage.getItem("userId") === demoUserId) {
+        setError(true);
       } else {
-        sendFriendRequest();
+        const formData = Object.fromEntries(fetcher.formData);
+        setIsLoading(true);
+
+        if (Object.keys(formData).includes("isFriend")) {
+          unfriendUsers();
+        } else {
+          sendFriendRequest();
+        }
       }
     }
   }, [fetcher, user, update, setUpdate]);
@@ -63,27 +68,35 @@ const FriendRequest = ({ user, update, setUpdate }) => {
           Awaiting {user.firstName}'s response from friendship request
         </div>
       ) : (
-        <fetcher.Form>
-          <input
-            type="text"
-            name="receiver"
-            defaultValue={user._id}
-            hidden
-            readOnly
-          ></input>
-          <input
-            type="checkbox"
-            name="isFriend"
-            checked={isFriend}
-            readOnly
-            hidden
-          ></input>
-          {isFriend ? (
-            <StyledButton>Unfriend</StyledButton>
-          ) : (
-            <StyledButton>Friend Request</StyledButton>
+        <>
+          <fetcher.Form>
+            <input
+              type="text"
+              name="receiver"
+              defaultValue={user._id}
+              hidden
+              readOnly
+            ></input>
+            <input
+              type="checkbox"
+              name="isFriend"
+              checked={isFriend}
+              readOnly
+              hidden
+            ></input>
+            {isFriend ? (
+              <StyledButton>Unfriend</StyledButton>
+            ) : (
+              <StyledButton>Friend Request</StyledButton>
+            )}
+          </fetcher.Form>
+          {error && (
+            <p className="error center">
+              Handling friendship status is disabled for the demo. Create new
+              account for full functionality
+            </p>
           )}
-        </fetcher.Form>
+        </>
       )}
       {isLoading && <LoadingCard />}
     </StyledFriendRequest>

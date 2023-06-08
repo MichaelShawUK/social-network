@@ -57,7 +57,7 @@ const CommentForm = ({
         <input type="text" name="post" hidden readOnly value={postId}></input>
         <StyledButton>Comment</StyledButton>
       </fetcher.Form>
-      <p className="error center pad">{error}</p>
+      <p className="error center">{error}</p>
     </StyledCommentForm>
   );
 };

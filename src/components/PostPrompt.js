@@ -87,7 +87,7 @@ const PostPrompt = ({ setData }) => {
         ></input>
         <StyledButton>Post</StyledButton>
       </fetcher.Form>
-      <p className="error center pad">{error}</p>
+      <p className="error center">{error}</p>
       {imageUrl && (
         <div className="flexContainer">
           <div className="imageContainer">
