@@ -12,7 +12,6 @@ const StyledFriendRequest = styled.div`
   flex-direction: column;
   align-items: center;
   gap: 0.5rem;
-  font-weight: bold;
 
   position: relative;
 
@@ -39,6 +38,10 @@ const StyledFriendRequest = styled.div`
     font-weight: normal;
     font-style: italic;
     text-align: center;
+  }
+
+  .name {
+    font-weight: bold;
   }
 
   img {
