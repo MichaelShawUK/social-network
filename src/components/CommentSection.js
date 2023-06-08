@@ -22,11 +22,12 @@ const CommentSection = ({
         data: { postId },
       });
 
+      setIsLoading(false);
       setComments(response.data.comments);
     }
-
+    setIsLoading(true);
     fetchComments();
-  }, [postId, update]);
+  }, [postId, update, setIsLoading]);
   return (
     <>
       <CommentForm
