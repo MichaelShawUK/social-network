@@ -52,7 +52,6 @@ const PostPrompt = ({ setData }) => {
           className="textInput"
           type="text"
           name="text"
-          autoFocus
         ></input>
         {!imageUrl && (
           <label htmlFor="imageFile" className="fileLabel">

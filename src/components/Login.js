@@ -56,7 +56,6 @@ const Login = () => {
               <input
                 type="text"
                 name="username"
-                autoFocus
                 defaultValue={username}
               ></input>
             </label>

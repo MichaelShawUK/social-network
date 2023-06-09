@@ -69,7 +69,6 @@ const EditProfile = ({ update, setUpdate }) => {
           placeholder={firstName}
           name="firstName"
           id="firstName"
-          autoFocus
           defaultValue={firstName}
         ></input>
         <label htmlFor="lastName">Last Name</label>

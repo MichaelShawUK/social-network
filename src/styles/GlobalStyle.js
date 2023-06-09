@@ -8,7 +8,7 @@ const GlobalStyle = createGlobalStyle`
     font-family: 'Noto Sans', sans-serif;
   }
 
-  a:visited {
+  a {
     color: inherit;
   }
 

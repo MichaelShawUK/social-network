@@ -51,7 +51,6 @@ const Register = () => {
               <input
                 type="text"
                 name="username"
-                autoFocus
                 defaultValue={form.username}
               ></input>
             </label>
