@@ -18,8 +18,8 @@ const People = () => {
 
   const [query, setQuery] = useOutletContext();
 
-  const filteredFriends = filterUsers(friends, query);
-  const filteredStrangers = filterUsers(strangers, query);
+  const filteredFriends = filterUsers(friends, query.toLowerCase());
+  const filteredStrangers = filterUsers(strangers, query.toLowerCase());
 
   const totalUsers = [...filteredFriends, ...filteredStrangers];
 
