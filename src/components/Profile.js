@@ -11,29 +11,32 @@ import axios from "axios";
 import { database } from "../data/constants";
 
 const Profile = () => {
-  const [isLoading, setIsLoading] = useState(true);
-
   const { userId } = useParams();
   const ownProfile = userId === localStorage.getItem("userId");
 
   const [update, setUpdate] = useState(false);
 
-  const [user, setUser] = useState({ friends: [], friendRequests: [] });
-  const [posts, setPosts] = useState([]);
+  const [data, setData] = useState({
+    user: {
+      friends: [],
+      friendRequests: [],
+    },
+    posts: [],
+  });
+
+  const user = data.user;
+  const posts = data.posts;
 
   const hasFriendRequest = user.friendRequests.length > 0;
 
   useEffect(() => {
     async function getProfile(userId) {
-      setIsLoading(true);
       const response = await axios({
         url: `${database}/profile/${userId}`,
         headers: { Authorization: `Bearer ${localStorage.token}` },
       });
 
-      setUser(response.data.user);
-      setPosts(response.data.posts);
-      setIsLoading(false);
+      setData(response.data);
     }
     getProfile(userId);
   }, [userId, update]);
@@ -42,7 +45,7 @@ const Profile = () => {
 
   return (
     <>
-      {isLoading ? (
+      {!Boolean(data?.user?.username) ? (
         <Loading />
       ) : (
         <div>

@@ -25,8 +25,8 @@ const PostFooter = ({
       headers: { Authorization: `Bearer ${localStorage.token}` },
       data: { post: post._id },
     });
-    setIsLoading(false);
     setUpdate(!update);
+    setIsLoading(false);
   }
 
   return (
