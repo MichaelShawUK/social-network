@@ -39,6 +39,7 @@ const StyledPostCard = styled.div`
 
   .post-text {
     margin-bottom: 1rem;
+    overflow-wrap: break-word;
   }
 
   .post-image {
