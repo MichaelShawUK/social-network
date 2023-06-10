@@ -45,7 +45,7 @@ const Profile = () => {
 
   return (
     <>
-      {!Boolean(data?.user?.username) ? (
+      {!data?.user?.username | (userId !== data.user._id) ? (
         <Loading />
       ) : (
         <div>
