@@ -1,7 +1,8 @@
 function Test() {
   async function connectToDb() {
     const response = await fetch(
-      "https://odinbook-api-production-9b7b.up.railway.app/test"
+      "https://odinbook-api-production-9b7b.up.railway.app/test",
+      { mode: "no-cors" }
     );
     const data = await response.json();
     console.log(data);
