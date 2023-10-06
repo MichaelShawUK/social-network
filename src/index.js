@@ -18,8 +18,6 @@ import loginAction from "./action/login";
 import Register from "./components/Register";
 import registerAction from "./action/register";
 
-import Test from "./components/Test";
-
 const router = createBrowserRouter([
   {
     element: <App />,
@@ -57,10 +55,6 @@ const router = createBrowserRouter([
       {
         path: "/logout",
         loader: logoutLoader,
-      },
-      {
-        path: "/test",
-        element: <Test />,
       },
     ],
   },
